@@ -500,6 +500,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
         } */
 
         /* Hero section styles */
@@ -694,7 +695,7 @@
                         max-width: 1200px;
                         margin: 0 auto;
                         padding: 0 15px;
-                        width: 100%;
+                        /* width: 100%; */
                     }
 
                     .hero-content {
@@ -1188,7 +1189,7 @@
             .feature-card {
                 padding: 20px 15px;
                 width: 90%;
-                margin: 15px;
+                
             }
             
             .features-content h2 {
@@ -1202,7 +1203,8 @@
             }
         }
     </style>
-<section class="implementation-journey">        <div class="max-w-4xl mx-auto pt-10 px-4">
+<section class="implementation-journey">        
+        <div class="max-w-4xl mx-auto pt-10 px-4">
             <div class="w-full my-10 md:px-10">
                 <div style="text-align: center; color: #fff;" class="px-4">
                     <h2 style="font-size: clamp(1.8rem, 5vw, 2.5rem);">Our AI Implementation Journey</h2>
@@ -1347,29 +1349,71 @@
             }
 
             @media (max-width: 768px) {
+                .implementation-journey {
+                    width: 95%;
+                    margin: 0 auto;
+                }
+                
                 .timeline-container {
-                    padding-left: 1rem;
-                    padding-right: 1rem;
+                    padding-left: 0.5rem;
+                    padding-right: 0.5rem;
+                    max-width: 100%;
                 }
                 
                 .timeline-card {
-                    padding: clamp(1rem, 3vw, 1.5rem);
+                    padding: 0.8rem;
+                    max-width: 90%;
+                }
+
+                .card-content {
+                    font-size: 0.9rem;
+                }
+
+                .card-title {
+                    font-size: 1.1rem;
                 }
             }
 
             @media (max-width: 480px) {
+                .implementation-journey {
+                    width: 90%;
+                }
+
                 .timeline-container {
-                    padding-left: 0.5rem;
-                    padding-right: 0.5rem;
+                    padding-left: 0.3rem;
+                    padding-right: 0.3rem;
                 }
 
                 .timeline-dot {
-                    margin-right: 1rem;
+                    margin-right: 0.8rem;
+                    width: 12px;
+                    height: 12px;
+                }
+
+                .timeline-card {
+                    padding: 0.6rem;
+                    max-width: 85%;
+                }
+
+                .card-content {
+                    font-size: 0.85rem;
+                }
+
+                .card-title {
+                    font-size: 1rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .card-content ul {
+                    padding-left: 1rem;
+                }
+
+                .card-content li {
+                    margin-bottom: 0.3rem;
                 }
             }
         </style>
     </section>
-    
     
           <section class="blog-section">
               <div class="container">
