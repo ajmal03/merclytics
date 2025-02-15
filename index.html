@@ -573,6 +573,42 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
     </style>
+
+
+
+
+<style>
+    .fade-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.fade-up').forEach(section => {
+            observer.observe(section);
+        });
+    });
+</script>
 </head>
 <body>
     <header class="main-header">
@@ -656,7 +692,7 @@
             color: #ffffff;
         }
     </style>
-    <section class="hero" style="margin-top: 100px;">
+    <section class="hero fade-up" style="margin-top: 100px;">
         <div class="container">
             <div class="hero-content">
                 <h1>Join the Revolution in AI-Powered Business Solutions!</h1>
@@ -667,7 +703,7 @@
                 
                 <!-- Popup Form -->
                 <div id="popupForm" class="popup">
-                    <div class="popup-content">
+                    <div class="popup-content animate">
                         <span class="close" onclick="closePopup()">×</span>
                         <h2>Join Our Waitlist</h2>
                         <form id="waitlistForm">
@@ -686,6 +722,22 @@
                             <button type="submit" class="btn">Submit</button>
                         </form>
                     </div>
+                    <style>
+                        .animate {
+                            animation: popupAnimation 0.3s ease-out;
+                        }
+                        
+                        @keyframes popupAnimation {
+                            from {
+                                transform: scale(0.7);
+                                opacity: 0;
+                            }
+                            to {
+                                transform: scale(1);
+                                opacity: 1;
+                            }
+                        }
+                    </style>
                     <style>
                         @media screen and (max-width: 768px) {
                             .popup-content {
@@ -795,7 +847,7 @@
                         left: 0;
                         width: 100%;
                         height: 100%;
-                        background-color: rgba(0, 0, 0, 0.434);
+               
                         z-index: 1000;
                         backdrop-filter: blur(8px);
                         padding: 10px;
@@ -923,7 +975,7 @@
             </div>         
         </div>
     </section>
-        <section class="stats-cards">
+        <section class="stats-cards fade-up">
         <div class="container">
             <div class="cards-wrapper">
                 <div class="stat-card">
@@ -1072,7 +1124,7 @@
 
 
     </style>    
-    <section class="features">        
+    <section class="features fade-up">        
         <div class="container">
             <div class="features-content">
                 <h2>We're empowering businesses with cutting-edge AI solutions to drive smarter decisions.</h2>
@@ -1212,7 +1264,7 @@
             }
         }
     </style>
-<section class="implementation-journey">        
+<section class="implementation-journey fade-up">        
         <div class="max-w-4xl mx-auto pt-10 px-4">
             <div class="w-full my-10 md:px-10">
                 <div style="text-align: center; color: #fff;" class="px-4">
@@ -1424,7 +1476,7 @@
         </style>
     </section>
     
-          <section class="blog-section">
+          <section class="blog-section fade-up">
               <div class="container">
                   <h2 class="section-title">Latest Insights</h2>
                   <div class="blog-grid">
@@ -1651,7 +1703,7 @@
               });
           </script>
 
-      <section class="team-section">
+      <section class="team-section fade-up">
           <div class="container">
               <h2 class="section-title">Our Team</h2>
               <div class="team-grid">
