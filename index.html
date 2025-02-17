@@ -317,7 +317,7 @@
             position: fixed;
             width: 65px;
             height: 65px;
-            background-color: rgb(12, 2, 28);
+            background-color: #0b2d79;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -489,11 +489,24 @@
             margin: 0;
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-            
+
+
+            background: linear-gradient(-45deg, #0f0c29, #1a1752, #302b63,#07204e, #24243e, #073282, #1a1752,#1a1752, #243B55);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
         }
 
-        @media screen and (min-width: 768px) {
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }        @media screen and (min-width: 768px) {
             body {
                 margin: 10px;
             }
