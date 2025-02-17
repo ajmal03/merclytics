@@ -487,13 +487,46 @@
             margin: 0;
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-            
+
+
+            background: linear-gradient(-45deg, #0f0c29, #1a1752, #302b63,#07204e, #24243e, #073282, #1a1752,#1a1752, #243B55);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
         }
 
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }        
+        
         @media screen and (min-width: 768px) {
             body {
                 margin: 10px;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            body {
+                background-size: 600% 200%;
+                animation: gradientBGMobile 10s ease infinite;
+            }
+        }
+
+        @keyframes gradientBGMobile {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
             }
         }
         /* .container {
@@ -577,7 +610,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <a href="./#index" style="display: flex; align-items: center;"><img src="assets/images/logo.png" alt="MercLytics Logo"></a>
+                    <a href="./" style="display: flex; align-items: center;"><img src="assets/images/logo.png" alt="MercLytics Logo"></a>
                     <span class="logo-text" >merclytics</span>                
                 </div>
                 <!-- <nav class="main-nav">
