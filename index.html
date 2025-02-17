@@ -615,7 +615,9 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <a href="#" style="display: flex; align-items: center;"><img src="assets/images/logo.png" alt="MercLytics Logo"></a>
+                    <a href="/" style="display: flex; align-items: center;">
+                        <img src="assets/images/logo.png" alt="MercLytics Logo">
+                    </a>
                     <span class="logo-text" >merclytics</span>                
                 </div>
                 <!-- <nav class="main-nav">
@@ -694,10 +696,10 @@
     </style>
     <section class="hero fade-up" style="margin-top: 100px;">
         <div class="container">
-            <div class="hero-content">
-                <h1>Join the Revolution in AI-Powered Business Solutions!</h1>
-                <p>Discover how we transform your business through our proven AI integration process. From initial assessment to measurable results, we guide you through each step of implementing intelligent solutions that drive real business value.</p>
-                <div class="cta-button">
+            <div class="hero-content fade-up">
+                <h1>Empower Your World with Next-Generation AI</h1>
+                <p>At Merclytics, we harness AI to create intelligent automation and smarter decisions for organizations of all sizes. Our Large Action Models optimize operations and enhance user experiences to unlock new opportunities.</p>
+                <div class="cta-button fade-up">
                     <a href="#" class="btn" onclick="openPopup()">Join Waitlist</a>
                 </div>
                 
@@ -812,7 +814,7 @@
                         }
 
                         .hero-image img {
-                            max-width: 85%;
+                            max-width: 100%;
                             width: 400px;
                         }
                     }
@@ -835,7 +837,7 @@
                         }
 
                         .hero-image img {
-                            max-width: 75%;
+                            max-width: 100%;
                             width: 300px;
                         }
                     }
@@ -970,23 +972,24 @@
                     });
                 </script>            
             </div>           
-             <div class="hero-image">                
+             <div class="hero-image fade-up">                
+
                 <img src="assets/images/hero.png" alt="AI Business Solutions">
             </div>         
-        </div>
-    </section>
+
+        </div>    </section>
         <section class="stats-cards fade-up">
         <div class="container">
             <div class="cards-wrapper">
-                <div class="stat-card">
+                <div class="stat-card fade-up">
                     <h2>40,000</h2>
                     <p>Customer Interactions Automated</p>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card fade-up">
                     <h2>98%</h2>
                     <p>Customer Query Resolution Rate</p>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card fade-up">
                     <h2>56,300</h2>
                     <p>AI-Powered Decisions Daily</p>
                 </div>
@@ -998,35 +1001,37 @@
         .stats-cards {
             width: 100%;
             text-align: center;
+            padding: 60px 0;
+          
         }
 
         .cards-wrapper {
             display: flex;
             justify-content: space-between;
-
-            gap: 20px;
+            gap: 30px;
             flex-wrap: wrap;
-
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .stat-card {
             flex: 1;
-
-
-            min-width: 200px;
-            padding: 25px 20px;
+            min-width: 250px;
+            padding: 35px 25px;
             text-align: center;
-            backdrop-filter: blur(10px);
-
-            border-radius: 12px;
+            backdrop-filter: blur(16px);
+            border-radius: 16px;
             color: white;
             position: relative;
             overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-            animation: neonPulse 2s infinite;
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
         }
 
         .stat-card::before {
@@ -1036,120 +1041,88 @@
             left: 0;
             right: 0;
             bottom: 0;
-
-
-            border: 1px solid transparent;
-            border-radius: 12px;
-            -webkit-mask: 
-                linear-gradient(#fff 0 0) content-box, 
-                linear-gradient(#fff 0 0);
-            mask: 
-                linear-gradient(#fff 0 0) content-box, 
-                linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .stat-card h2 {
-
-
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            margin: 0 0 10px 0;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin: 0 0 15px 0;
             color: #ffffff;
-            font-weight: 700;
+            font-weight: 800;
             text-align: center;
+            background: linear-gradient(135deg, #ffffff, #a8a8a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .stat-card p {
-
-            font-size: clamp(0.8rem, 1.5vw, 1rem);
+            font-size: clamp(1rem, 1.8vw, 1.2rem);
             margin: 0;
             opacity: 0.9;
             text-align: center;
-        }
-
-        @keyframes neonPulse {
-            0%, 100% {
-
-                box-shadow: 0 0 15px rgba(255, 255, 255, 0.058);
-            }
-            50% {
-
-                box-shadow: 0 0 30px rgba(255, 255, 255, 0.074);
-            }
+            color: #f0f0f0;
         }
 
         @media (max-width: 1024px) {
             .cards-wrapper {
-
-                gap: 15px;
+                gap: 20px;
+                padding: 0 20px;
             }
             .stat-card {
-
-                min-width: 180px;
+                min-width: 220px;
             }
         }
 
         @media (max-width: 768px) {
-
             .cards-wrapper {
                 flex-direction: column;
-
-                gap: 20px;
+                gap: 25px;
                 align-items: center;
-                text-align: center;
             }
             .stat-card {
-
-
-                width: 85%;
-                max-width: 280px;
-                margin: 0 auto;
-                text-align: center;
+                width: 90%;
+                max-width: 320px;
             }
         }
 
         @media (max-width: 480px) {
-
+            .stats-cards {
+                padding: 40px 0;
+            }
             .stat-card {
-
-
-
-                width: 80%;
-                max-width: 240px;
-                padding: 20px 15px;
-                text-align: center;
+                width: 85%;
+                max-width: 280px;
+                padding: 25px 20px;
             }
         }
-
-
-    </style>    
-    <section class="features fade-up">        
+    </style>    <section class="features fade-up">        
         <div class="container">
             <div class="features-content">
-                <h2>We're empowering businesses with cutting-edge AI solutions to drive smarter decisions.</h2>
-                <p class="subtitle">Be the first to access our exclusive services.</p>
+                <h2>Experience Tailored AI Innovations</h2>
+                <p class="subtitle">Discover how custom AI solutions drive growth and efficiency.</p>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="icon">
-                            <i class="fas fa-chart-line"></i>
+                            <i class="fas fa-chart-pie"></i>
                         </div>
-                        <h3>Sales Optimization</h3>
-                        <p>AI Solutions tailored for inbound & outbound sales optimization and revenue growth.</p>
+                        <h3>Optimized Sales & Revenue</h3>
+                        <p>Boost conversions with data-driven insights and dynamic sales strategies that capture every opportunity.</p>
                     </div>
                     <div class="feature-card">
                         <div class="icon">
-                            <i class="fas fa-headset"></i>
+                            <i class="fas fa-headphones-alt"></i>
                         </div>
-                        <h3>Customer Support</h3>
-                        <p>24/7 real-time customer service support powered by advanced AI technology.</p>
+                        <h3>24/7 AI Customer Support</h3>
+                        <p>Seamlessly integrate intelligent chat and voice assistants to handle inquiries and deliver real-time assistance.</p>
                     </div>
                     <div class="feature-card">
                         <div class="icon">
-                            <i class="fas fa-robot"></i>
+                            <i class="fas fa-cogs"></i>
                         </div>
-                        <h3>Smart Assistance</h3>
-                        <p>Personalized business assistance powered by intelligent automation.</p>
+                        <h3>Smart Automation Tools</h3>
+                        <p>Leverage cutting-edge AI to automate tasks, reduce manual efforts, and empower your team's productivity.</p>
                     </div>
                 </div>
             </div>
@@ -1158,88 +1131,79 @@
 
     <style>
         .features {
-            padding: 60px 20px;
-            color: white;
+            padding: 80px 20px;
+            color: #f0f0f0;
+        
         }
 
         .features-content {
             text-align: center;
-            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .features-content h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 1rem;
-            font-weight: 700;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
+            font-weight: 800;
+            color: #ffffff;
         }
 
         .features-content .subtitle {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            text-align: center;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            margin-bottom: 2.5rem;
+            color: #cccccc;
         }
 
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-
-
-            max-width: 1200px;
-            margin: 0 auto;
-            gap: 100px;
-            justify-content: center;
+            gap: 60px;
+            justify-items: center;
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 15px;
-            padding: clamp(20px, 4vw, 40px);
+            padding: 30px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
-            width: 100%;
             max-width: 350px;
-           
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
         }
 
         .feature-card .icon {
-            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             color: #ffffff;
             margin-bottom: 20px;
         }
 
         .feature-card h3 {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
             margin-bottom: 15px;
             color: #ffffff;
         }
 
         .feature-card p {
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            opacity: 0.9;
-            line-height: 1.6;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            line-height: 1.5;
+            color: #dcdcdc;
         }
 
         @media (max-width: 992px) {
             .features {
-                padding: 40px 15px;
+                padding: 60px 15px;
             }
         }
 
         @media (max-width: 480px) {
             .features {
-                padding: 30px 10px;
+                padding: 40px 10px;
             }
             
             .features-grid {
@@ -1250,39 +1214,36 @@
             .feature-card {
                 padding: 20px 15px;
                 width: 90%;
-                
             }
             
             .features-content h2 {
-                font-size: 1.6rem;
-                padding: 0 10px;
+                font-size: 1.8rem;
             }
             
             .features-content .subtitle {
                 font-size: 1rem;
-                padding: 0 10px;
             }
         }
     </style>
-<section class="implementation-journey fade-up">        
+<section class="implementation-journey fade-up">
         <div class="max-w-4xl mx-auto pt-10 px-4">
             <div class="w-full my-10 md:px-10">
-                <div style="text-align: center; color: #fff;" class="px-4">
-                    <h2 style="font-size: clamp(1.8rem, 5vw, 2.5rem);">Our AI Implementation Journey</h2>
-                    <p style="font-size: clamp(1rem, 3vw, 1.2rem); max-width: 800px; margin: 0 auto;">From comprehensive analysis to seamless integration, see how our AI solutions transform your business operations at every step.</p>
+            <div style="text-align: center; color: #fff;" class="px-4">
+                    <h2 style="font-size: clamp(1.8rem, 5vw, 2.5rem);">AI Implementation Process</h2>
+                    <p style="font-size: clamp(1rem, 3vw, 1.2rem); max-width: 800px; margin: 0 auto;">Discover how our cutting-edge AI solutions revolutionize your business through our proven implementation methodology.</p>
                 </div>                
                 <div class="relative max-w-3xl mx-auto md:pb-20">
                     <div class="timeline-container">
                         <div class="timeline-item">
                             <div class="timeline-dot"></div>
                             <div class="timeline-card">
-                                <h3 class="card-title">Initial Assessment</h3>
+                                <h3 class="card-title">Discovery Phase</h3>
                                 <div class="card-content">
-                                    <p>We begin by analyzing your business processes and identifying key areas where AI can drive significant improvements. Our team works closely with yours to understand your unique challenges and goals.</p>
+                                    <p>Our experts conduct a thorough analysis of your business ecosystem to identify optimal AI integration points.</p>
                                     <ul>
-                                        <li>Comprehensive business process analysis</li>
-                                        <li>Identification of automation opportunities</li>
-                                        <li>Custom solution planning and roadmap</li>
+                                        <li>In-depth business needs assessment</li>
+                                        <li>Technology stack evaluation</li>
+                                        <li>Strategic implementation planning</li>
                                     </ul>
                                 </div>
                             </div>
@@ -1290,13 +1251,13 @@
                         <div class="timeline-item">
                             <div class="timeline-dot"></div>
                             <div class="timeline-card">
-                                <h3 class="card-title">AI Integration</h3>
+                                <h3 class="card-title">Development & Integration</h3>
                                 <div class="card-content">
-                                    <p>Our AI solutions are seamlessly integrated into your existing systems, focusing on three key areas:</p>
+                                    <p>We develop and implement customized AI solutions focused on:</p>
                                     <ul>
-                                        <li>Sales optimization through predictive analytics</li>
-                                        <li>24/7 AI-powered customer support implementation</li>
-                                        <li>Smart business process automation</li>
+                                        <li>Advanced machine learning algorithms</li>
+                                        <li>Natural language processing systems</li>
+                                        <li>Intelligent automation frameworks</li>
                                     </ul>
                                 </div>
                             </div>
@@ -1304,14 +1265,14 @@
                         <div class="timeline-item">
                             <div class="timeline-dot"></div>
                             <div class="timeline-card">
-                                <h3 class="card-title">Results</h3>
+                                <h3 class="card-title">Impact & Growth</h3>
                                 <div class="card-content">
-                                    <p>Experience measurable improvements across your business operations with our AI solutions:</p>
+                                    <p>Our AI solutions deliver transformative results:</p>
                                     <ul>
-                                        <li>40% increase in sales conversion rates</li>
-                                        <li>60% reduction in customer response time</li>
-                                        <li>35% improvement in operational efficiency</li>
-                                        <li>50% decrease in routine task workload</li>
+                                        <li>75% faster decision-making processes</li>
+                                        <li>85% accuracy in predictive analytics</li>
+                                        <li>90% automation of repetitive tasks</li>
+                                        <li>45% reduction in operational costs</li>
                                     </ul>
                                 </div>
                             </div>
@@ -1323,71 +1284,82 @@
         <style>
             .timeline-container {
                 position: relative;
-                padding: clamp(1rem, 4vw, 2rem) 0;
+                padding: clamp(1.5rem, 4vw, 2.5rem) 0;
                 margin: 0 auto;
-                max-width: 600px;
+                max-width: 700px;
             }
 
             .timeline-item {
                 display: flex;
-                margin-bottom: clamp(2rem, 6vw, 4rem);
+                margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
                 position: relative;
                 opacity: 0;
                 transform: translateY(20px);
-                animation: fadeInUp 0.6s ease forwards;
+                animation: fadeInUp 0.8s ease forwards;
             }
             
             .timeline-dot {
-                width: clamp(15px, 3vw, 20px);
-                height: clamp(15px, 3vw, 20px);
-                background: #fff;
+                width: clamp(18px, 3vw, 24px);
+                height: clamp(18px, 3vw, 24px);
+                background: linear-gradient(45deg, #0e135692, #ffffff);
                 border-radius: 50%;
-                margin-right: clamp(1rem, 4vw, 2rem);
+                margin-right: clamp(1.2rem, 4vw, 2.2rem);
                 position: relative;
                 z-index: 2;
-                box-shadow: 0 0 0 4px rgba(255,255,255,0.1);
-                animation: pulse 2s infinite;
+                box-shadow: 0 0 0 4px rgba(79,172,254,0.2);
+                animation: pulse 2.5s infinite;
             }
 
             .timeline-card {
-                background: rgba(255,255,255,0.05);
-                border-radius: 15px;
-                padding: clamp(1rem, 4vw, 2rem);
+                background: rgba(255,255,255,0.07);
+                border-radius: 20px;
+                padding: clamp(1.2rem, 4vw, 2.2rem);
                 flex: 1;
-                backdrop-filter: blur(10px);
-                transition: transform 0.3s ease;
-                max-width: 500px;
+                backdrop-filter: blur(12px);
+                transition: all 0.4s ease;
+                border: 1px solid rgba(255,255,255,0.1);
+                max-width: 550px;
                 margin: 0 auto;
             }
 
             .timeline-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                transform: translateY(-8px);
+                background: rgba(255,255,255,0.1);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.3);
             }
 
             .card-title {
-                font-size: clamp(1.2rem, 3vw, 1.5rem);
+                font-size: clamp(1.3rem, 3vw, 1.7rem);
                 font-weight: bold;
-                color: #fff;
-                margin-bottom: 1rem;
+                color: #ffffff;
+                margin-bottom: 1.2rem;
             }
 
             .card-content {
-                color: #a0aec0;
-                font-size: clamp(0.9rem, 2vw, 1rem);
+                color: #b8c6db;
+                font-size: clamp(0.95rem, 2vw, 1.1rem);
+                line-height: 1.6;
             }
 
             .card-content p {
-                margin-bottom: 1rem;
+                margin-bottom: 1.2rem;
             }
 
             .card-content ul {
-                list-style-type: disc;
-                padding-left: clamp(1rem, 3vw, 1.5rem);
+                list-style-type: none;
+                padding-left: clamp(0.8rem, 3vw, 1.3rem);
             }
 
             .card-content li {
-                margin-bottom: 0.5rem;
+                margin-bottom: 0.8rem;
+                position: relative;
+            }
+
+            .card-content li:before {
+                content: "→";
+                position: absolute;
+                left: -1.2rem;
+                color: #ffffff;
             }
 
             @keyframes fadeInUp {
@@ -1399,13 +1371,13 @@
 
             @keyframes pulse {
                 0% {
-                    box-shadow: 0 0 0 0 rgba(255,255,255,0.4);
+                    box-shadow: 0 0 0 0 rgba(79,172,254,0.4);
                 }
                 70% {
-                    box-shadow: 0 0 0 10px rgba(255,255,255,0);
+                    box-shadow: 0 0 0 15px rgba(79,172,254,0);
                 }
                 100% {
-                    box-shadow: 0 0 0 0 rgba(255,255,255,0);
+                    box-shadow: 0 0 0 0 rgba(193, 193, 193, 0);
                 }
             }
 
@@ -1416,14 +1388,43 @@
                 }
                 
                 .timeline-container {
-                    padding-left: 0.5rem;
-                    padding-right: 0.5rem;
-                    max-width: 100%;
+                    padding-left: 0.8rem;
+                    padding-right: 0.8rem;
                 }
                 
                 .timeline-card {
-                    padding: 0.8rem;
+                    padding: 1rem;
                     max-width: 90%;
+                }
+
+                .card-content {
+                    font-size: 0.95rem;
+                }
+
+                .card-title {
+                    font-size: 1.2rem;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .implementation-journey {
+                    width: 92%;
+                }
+
+                .timeline-container {
+                    padding-left: 0.5rem;
+                    padding-right: 0.5rem;
+                }
+
+                .timeline-dot {
+                    margin-right: 1rem;
+                    width: 15px;
+                    height: 15px;
+                }
+
+                .timeline-card {
+                    padding: 0.8rem;
+                    max-width: 88%;
                 }
 
                 .card-content {
@@ -1432,45 +1433,11 @@
 
                 .card-title {
                     font-size: 1.1rem;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .implementation-journey {
-                    width: 90%;
-                }
-
-                .timeline-container {
-                    padding-left: 0.3rem;
-                    padding-right: 0.3rem;
-                }
-
-                .timeline-dot {
-                    margin-right: 0.8rem;
-                    width: 12px;
-                    height: 12px;
-                }
-
-                .timeline-card {
-                    padding: 0.6rem;
-                    max-width: 85%;
-                }
-
-                .card-content {
-                    font-size: 0.85rem;
-                }
-
-                .card-title {
-                    font-size: 1rem;
-                    margin-bottom: 0.5rem;
-                }
-
-                .card-content ul {
-                    padding-left: 1rem;
+                    margin-bottom: 0.8rem;
                 }
 
                 .card-content li {
-                    margin-bottom: 0.3rem;
+                    margin-bottom: 0.5rem;
                 }
             }
         </style>
@@ -1705,7 +1672,7 @@
 
       <section class="team-section fade-up">
           <div class="container">
-              <h2 class="section-title">Our Team</h2>
+              <h2 class="section-title fade-up">Our Team</h2>
               <div class="team-grid">
                   <div class="team-member">
                       <div class="member-image">
@@ -1717,7 +1684,7 @@
                           <a href="https://www.linkedin.com/in/andy-parackal-e-acc-354b03120?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link"><i class="fab fa-linkedin"></i></a>
                           <a href="https://x.com/Andyparackal?t=D33Z697JVvtOGxgdyiy_Pw&s=09" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
                       </div>
-                      <a href="#" class="know-more"><i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
+                      <a href="#" class="know-more">View More <i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
                   </div>
 
                   <div class="team-member">
@@ -1729,7 +1696,7 @@
                       <div class="social-links">
                         <a href="https://x.com/umeshonai?s=21" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
                       </div>
-                      <a href="#" class="know-more"><i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
+                      <a href="#" class="know-more">View More <i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
                   </div>
 
                   <div class="team-member">
@@ -1741,7 +1708,7 @@
                       <div class="social-links">
                         <a href="https://x.com/chatbooapp?s=21" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
                       </div>
-                      <a href="#" class="know-more"><i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
+                      <a href="#" class="know-more">View More <i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
                   </div>
 
                   <div class="team-member">
@@ -1751,11 +1718,9 @@
                       <h3>Ashish Kumar</h3>
                       <p class="role">Google Developer Expert</p>
                       <div class="social-links">
-                          
                           <a href="https://x.com/imdigitalashish?s=21" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
-                         
                       </div>
-                      <a href="ashish-profile.html" class="know-more"><i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
+                      <a href="ashish-profile.html" class="know-more">View More <i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
                   </div>
               </div>
           </div>
@@ -1826,6 +1791,7 @@
               display: flex;
               justify-content: center;
               gap: 1rem;
+              margin-bottom: 1rem;
           }
 
           .social-link {
@@ -1836,6 +1802,20 @@
 
           .social-link:hover {
               color: #ffffff;
+          }
+
+          .know-more {
+              display: inline-flex;
+              align-items: center;
+              gap: 0.5rem;
+              color: #ffffff;
+              text-decoration: none;
+              font-size: 0.9rem;
+              transition: opacity 0.3s ease;
+          }
+
+          .know-more:hover {
+              opacity: 0.8;
           }
 
           @media (max-width: 768px) {
@@ -1897,10 +1877,7 @@
                   font-size: 0.9rem;
               }
           }
-      </style>
-
-
-    <style>
+      </style>    <style>
         footer {
             color: #fff;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
