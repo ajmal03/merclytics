@@ -506,9 +506,29 @@
             100% {
                 background-position: 0% 50%;
             }
-        }        @media screen and (min-width: 768px) {
+        }        
+        
+        @media screen and (min-width: 768px) {
             body {
                 margin: 10px;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            body {
+                background-size: 600% 200%;
+                animation: gradientBGMobile 10s ease infinite;
+            }
+        }
+
+        @keyframes gradientBGMobile {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
             }
         }
         /* .container {
@@ -711,8 +731,8 @@
         <div class="container">
             <div class="hero-content fade-up">
                 <h1>Empower Your World with Next-Generation AI</h1>
-                <p>At Merclytics, we harness AI to create intelligent automation and smarter decisions for organizations of all sizes. Our Large Action Models optimize operations and enhance user experiences to unlock new opportunities.</p>
-                <div class="cta-button fade-up">
+                <p style="font-size: clamp(16px, 4vw, 20px); line-height: 1.6; margin: 0 auto; max-width: 90%; text-align: center;">At Merclytics, we harness AI to create intelligent automation and smarter decisions for organizations of all sizes. Our Large Action Models optimize operations and enhance user experiences to unlock new opportunities.</p>
+                <div class="cta-button fade-up" style="margin-top: 30px;">
                     <a href="#" class="btn" onclick="openPopup()">Join Waitlist</a>
                 </div>
                 
@@ -2018,4 +2038,3 @@
 
 </body>
 </html>
- 
