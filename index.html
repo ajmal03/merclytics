@@ -733,14 +733,51 @@
                 <h1>Empower Your World with Next-Generation AI</h1>
                 <p style="font-size: clamp(16px, 4vw, 20px); line-height: 1.6; margin: 0 auto; max-width: 90%; text-align: center;">At Merclytics, we harness AI to create intelligent automation and smarter decisions for organizations of all sizes. Our Large Action Models optimize operations and enhance user experiences to unlock new opportunities.</p>
                 <div class="cta-button fade-up" style="margin-top: 30px;">
-                    <a href="#" class="btn" onclick="openPopup()">Join Waitlist</a>
-                </div>
-                
-                <!-- Popup Form -->
+                    <a href="#" class="btn pulse-btn" onclick="openPopup()" 
+                       style="position: relative; overflow: hidden; transition: all 0.3s ease; padding: 10px 20px; font-size: 14px;">
+                        Join <span class="hover-text" 
+                                  style="display: inline-block; 
+                                         transition: transform 0.3s ease, opacity 0.3s ease;">
+                            the AI revolution today
+                        </span>
+                        <span class="btn-effect" 
+                              style="position: absolute; 
+                                     top: 50%; 
+                                     left: 50%; 
+                                     transform: translate(-50%, -50%); 
+                                     width: 0; 
+                                     height: 0; 
+                                     background: rgba(255,255,255,0.2); 
+                                     border-radius: 50%; 
+                                     transition: width 0.6s ease, height 0.6s ease;"></span>
+                    </a>
+                    <style>
+                        .pulse-btn {
+                            animation: pulse 2s infinite;
+                        }
+                        .pulse-btn:hover {
+                            transform: scale(1.05);
+                            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+                        }
+                        .pulse-btn:hover .hover-text {
+                            transform: translateY(-2px);
+                        }
+                        .pulse-btn:hover .btn-effect {
+                            width: 200px;
+                            height: 200px;
+                            opacity: 0;
+                        }
+                        @keyframes pulse {
+                            0% { transform: scale(1); }
+                            50% { transform: scale(1.03); }
+                            100% { transform: scale(1); }
+                        }
+                    </style>
+                </div>               
+                 <!-- Popup Form -->
                 <div id="popupForm" class="popup">
                     <div class="popup-content animate">
-                        <span class="close" onclick="closePopup()">×</span>
-                        <h2>Join Our Waitlist</h2>
+                        <span class="close" onclick="closePopup()">×</span>                        <h2>Schedule Your AI Consultation</h2>
                         <form id="waitlistForm">
                             <div class="form-group">
                                 <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -1717,7 +1754,7 @@
                           <a href="https://www.linkedin.com/in/andy-parackal-e-acc-354b03120?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link"><i class="fab fa-linkedin"></i></a>
                           <a href="https://x.com/Andyparackal?t=D33Z697JVvtOGxgdyiy_Pw&s=09" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
                       </div>
-                      <a href="Andy-pro.html" class="know-more">View More <i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
+                      <a href="#" class="know-more">View More <i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
                   </div>
 
                   <div class="team-member">
@@ -1729,7 +1766,7 @@
                       <div class="social-links">
                         <a href="https://x.com/umeshonai?s=21" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
                       </div>
-                      <a href="umesh-pro.html" class="know-more">View More <i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
+                      <a href="#" class="know-more">View More <i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
                   </div>
 
                   <div class="team-member">
@@ -1741,7 +1778,7 @@
                       <div class="social-links">
                         <a href="https://x.com/chatbooapp?s=21" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
                       </div>
-                      <a href="Adam-pro.html" class="know-more">View More <i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
+                      <a href="#" class="know-more">View More <i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
                   </div>
 
                   <div class="team-member">
