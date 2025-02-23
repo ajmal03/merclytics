@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/images/fav-icon.png" type="image/x-icon">
+    <title>Merclytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+
+
+
+
+
+
+    <style>
+
+        /* inter-300 - latin */
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 300;
+          font-display: swap;
+          src: local(''),
+            url('fonts/inter-v12-latin-300.woff2') format('woff2'),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-300.woff') format('woff');
+          /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+    
+        /* inter-400 - latin */
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: local(''),
+            url('fonts/inter-v12-latin-regular.woff2') format('woff2'),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-regular.woff') format('woff');
+          /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+    
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 500;
+          font-display: swap;
+          src: local(''),
+            url('fonts/inter-v12-latin-500.woff2') format('woff2'),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-500.woff') format('woff');
+          /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+    
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 700;
+          font-display: swap;
+          src: local(''),
+            url('fonts/inter-v12-latin-700.woff2') format('woff2'),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-700.woff') format('woff');
+          /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+    
+        .chat-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background-color: rgb(12, 2, 28);  /* Updated primary color */
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(12, 2, 28, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+      
+        .chat-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(12, 2, 28, 0.4);
+        }
+      
+        .chat-bubble i {
+            color: white;
+            font-size: 28px;  /* Adjust icon size */
+        }
+      
+        .chat-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 380px;
+            height: 600px;
+            background-color: white;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(12, 2, 28, 0.15);
+            display: none;
+            z-index: 1000;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+      
+        .chat-container iframe {
+            width: 100%;
+            height: calc(100% - 60px);
+            border: none;
+            background: #fff;
+        }
+      
+        .chat-container .chat-header {
+            position: relative;
+            height: 60px;
+            background-color: rgb(12, 2, 28);  /* Updated primary color */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+        }
+      
+        .chat-container .chat-header .close-button {
+            cursor: pointer;
+            font-size: 28px;
+            font-weight: 400;
+            color: #fff;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            padding: 5px;
+            line-height: 1;
+        }
+    
+        .chat-container .chat-header .close-button:hover {
+            opacity: 1;
+        }
+      
+        /* Tablet */
+        @media screen and (max-width: 991px) {
+            .chat-container {
+                width: 360px;
+                height: 550px;
+                bottom: 90px;
+            }
+        }
+    
+        /* Mobile */
+        @media screen and (max-width: 600px) {
+            .chat-bubble {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+    
+            .chat-bubble i {
+                font-size: 24px;
+            }
+            
+            .chat-container {
+                width: 90%;
+                height: 80vh;
+                max-height: 600px;
+                bottom: 90px;
+                right: 5%;
+                left: 5%;
+            }
+    
+            .chat-header {
+                height: 55px;
+                padding: 0 15px;
+                font-size: 16px;
+            }
+        }
+    
+        /* Small Mobile */
+        @media screen and (max-width: 380px) {
+            .chat-container {
+                bottom: 80px;
+                height: 75vh;
+            }
+    
+            .chat-bubble {
+                width: 50px;
+                height: 50px;
+            }
+    
+            .chat-bubble i {
+                font-size: 22px;
+            }
+        }
+    
+        .chat-container .chat-header .close-button {
+          cursor: pointer;
+          font-size: 24px;
+          font-weight: bold;
+          color: #555;
+          padding: 0 10px;
+        }
+      
+        @media screen and (min-width: 600px) {
+          .chat-container {
+            width: 400px;
+            height: 400px;
+            bottom: 100px;
+            right: 20px;
+          }
+        }
+    
+        @media screen and (max-width: 600px) {
+          body {
+            padding: 0;
+          }
+          .chat-container {
+            width: 90%;
+            height:500px;
+            left: 20px;
+            right: 0;
+    /*         max-width: none; */
+          }
+        }
+    
+        .call-bubble {
+            position: fixed;
+            bottom: 110px;  /* Position above chat bubble */
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background-color: rgb(12, 2, 28);  /* Updated primary color */
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(12, 2, 28, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+    
+        .call-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(12, 2, 28, 0.4);
+        }
+    
+        .call-bubble i {
+            color: white;
+            font-size: 28px;
+        }
+    
+        /* Mobile adjustments for call bubble */
+        @media screen and (max-width: 600px) {
+            .call-bubble {
+                bottom: 90px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+    
+            .call-bubble i {
+                font-size: 24px;
+            }
+        }
+    
+        @media screen and (max-width: 380px) {
+            .call-bubble {
+                bottom: 85px;
+                width: 50px;
+                height: 50px;
+            }
+    
+            .call-bubble i {
+                font-size: 22px;
+            }
+        }
+    
+        @keyframes pulseAnimation {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(12, 2, 28, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 20px rgba(12, 2, 28, 0.4);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(12, 2, 28, 0.3);
+            }
+        }
+    
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    
+        .chat-bubble, .call-bubble {
+            position: fixed;
+            width: 65px;
+            height: 65px;
+            background-color: rgb(12, 2, 28);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: floatAnimation 3s ease-in-out infinite;
+            box-shadow: 0 4px 15px rgba(12, 2, 28, 0.3),
+                        0 8px 30px rgba(12, 2, 28, 0.2),
+                        0 15px 45px rgba(12, 2, 28, 0.1);
+        }
+    
+        .chat-bubble {
+            bottom: 30px;
+            right: 30px;
+        }
+    
+        .call-bubble {
+            bottom: 110px;
+            right: 30px;
+        }
+    
+        .chat-bubble:hover, .call-bubble:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(12, 2, 28, 0.4),
+                        0 12px 35px rgba(12, 2, 28, 0.3),
+                        0 20px 50px rgba(12, 2, 28, 0.2);
+        }
+    
+        .chat-bubble i, .call-bubble i {
+            color: white;
+            font-size: 28px;
+            transition: transform 0.3s ease;
+            animation: pulseAnimation 2s ease-in-out infinite;
+        }
+    
+        .chat-bubble:hover i, .call-bubble:hover i {
+            transform: scale(1.1);
+        }
+    
+        /* Add ripple effect */
+        .chat-bubble::after, .call-bubble::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(0);
+            transition: transform 0.5s ease-out;
+        }
+    
+        .chat-bubble:active::after, .call-bubble:active::after {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    
+        /* Mobile adjustments */
+        @media screen and (max-width: 600px) {
+            .chat-bubble, .call-bubble {
+                width: 55px;
+                height: 55px;
+                animation: floatAnimation 2.5s ease-in-out infinite;
+            }
+    
+            .chat-bubble i, .call-bubble i {
+                font-size: 24px;
+            }
+    
+            .chat-bubble {
+                bottom: 20px;
+                right: 20px;
+            }
+    
+            .call-bubble {
+                bottom: 90px;
+                right: 20px;
+            }
+        }
+    
+        @media screen and (max-width: 380px) {
+            .chat-bubble, .call-bubble {
+                width: 50px;
+                height: 50px;
+            }
+    
+            .chat-bubble i, .call-bubble i {
+                font-size: 22px;
+            }
+    
+            .call-bubble {
+                bottom: 85px;
+            }
+        }
+    
+        /* Disable animations if user prefers reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .chat-bubble, .call-bubble, .chat-bubble i, .call-bubble i {
+                animation: none;
+                transition: none;
+            }
+        }
+      </style>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Create call bubble
+            const callBubble = document.createElement("div");
+            callBubble.className = "call-bubble";
+            callBubble.innerHTML = `
+                <a href="tel:+17068735728" style="color: white; text-decoration: none;">
+                    <i class="fas fa-phone"></i>
+                </a>
+            `;
+            document.body.appendChild(callBubble);
+    
+            // Create chat bubble with Font Awesome icon instead of image
+            const chatBubble = document.createElement("div");
+            chatBubble.className = "chat-bubble";
+            chatBubble.innerHTML = `
+                <i class="fas fa-comments"></i>
+            `;
+            document.body.appendChild(chatBubble);
+    
+            const chatContainer = document.createElement("div");
+            chatContainer.className = "chat-container";
+    
+            const welcomeMessage = encodeURIComponent("Welcome to Merclytics AI. How can I help you?");
+            const systemMessage = encodeURIComponent("Your name is Merclytics AI, an intelligent AI assistant for Merclytics, an industry-leading agency specializing in AI-powered sales automation, 24/7 customer service, and personalized business support. Founded by tech visionary Andy Parackal, Merclytics is dedicated to harnessing the power of AI to redefine business efficiency, streamline operations, and enhance customer engagement. Your role is to provide businesses with clear and concise information about Merclytics' services while guiding them toward solutions that fit their needs.Merclytics offers AI-driven inbound and outbound sales call support, ensuring businesses never miss an opportunity. With 24/7 availability, businesses can rely on AI to engage potential customers, follow up on leads, and optimize conversion rates. For customer service, Merclytics provides real-time AI-powered assistance, handling inquiries, resolving complaints, and maintaining client relationships with seamless, human-like interaction. For businesses seeking AI-powered personal assistant services, Merclytics AI enhances productivity by automating tasks, managing workflows, and facilitating personalized communication with customers. Whether optimizing sales processes, improving customer satisfaction, or streamlining business operations, Merclytics AI ensures a competitive edge in today’s fast-paced market. When asked about pricing, inform users that Merclytics provides customized AI solutions tailored to specific business needs. Businesses can reach out for a personalized quote via the contact form at www.merclytics.com, through email at info@merclytics.com, or by speaking to a live phone agent at +1 (706) 873-5728. Do not provide specific pricing or make financial commitments, but focus on explaining the unique benefits of Merclytics’ solutions. Encourage users to explore how Merclytics AI can transform their business with innovative automation, smarter sales strategies, and superior customer interactions. Highlight Merclytics’ expertise in lead generation, customer retention, and AI-powered client experiences. Ensure that responses remain clear, professional, and persuasive, positioning Merclytics as the ultimate AI-driven business solution. Your goal is to assist businesses in understanding Merclytics’ offerings, ensuring they receive the right information to connect with Merclytics for AI-powered solutions. Always inquire about their specific business needs and demonstrate why Merclytics is the perfect AI partner for their growth. Respond concisely, never break character, and maintain focus on Merclytics’ services. Do not engage in anything outside of being Merclytics AI.");
+    
+            chatContainer.innerHTML = `
+                <div class="chat-header">
+                    <span>Merclytics AI</span>
+                    <span class="close-button">×</span>
+                </div>
+                <iframe 
+                    src="https://neo.dn1a0s4d5ozpp.amplifyapp.com/?welcomeMessage=${welcomeMessage}&systemMessage=${systemMessage}"
+                    title="Chat UI"
+                    allow="microphone">
+                </iframe>
+            `;
+            document.body.appendChild(chatContainer);
+    
+            const closeButton = chatContainer.querySelector(".close-button");
+    
+            chatContainer.style.display = "none";
+    
+            // Simplified click handler for chat bubble
+            chatBubble.addEventListener("click", function () {
+                chatContainer.style.display = "block";
+                setTimeout(() => chatContainer.style.opacity = "1", 10);
+            });
+    
+            closeButton.addEventListener("click", function () {
+                chatContainer.style.opacity = "0";
+                setTimeout(() => chatContainer.style.display = "none", 300);
+            });
+        });
+    </script>
+
+
+
+
+
+    <style>
+        
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+
+
+            background: linear-gradient(-45deg, #0f0c29, #1a1752, #302b63,#07204e, #24243e, #073282, #1a1752,#1a1752, #243B55);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }        
+        
+        @media screen and (min-width: 768px) {
+            body {
+                margin: 10px;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            body {
+                background-size: 600% 200%;
+                animation: gradientBGMobile 10s ease infinite;
+            }
+        }
+
+        @keyframes gradientBGMobile {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        /* .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        } */
+
+        /* Hero section styles */
+        .hero {
+           
+            color: white;
+        
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button .btn {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+     
+        .logo-text {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                box-shadow: none;
+            }
+            50% {
+                box-shadow: none;
+            }
+        }
+
+        /* Update any other instances of the color */
+        .main-nav a:hover {
+            color: #ffffff;
+        }
+
+        .result-number {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="./" style="display: flex; align-items: center;"><img src="assets/images/logo.png" alt="MercLytics Logo"></a>
+                    <!-- <span class="logo-text" >merclytics</span>                 -->
+                </div>
+                <!-- <nav class="main-nav">
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav> -->
+            </div>
+        </div>
+    </header>
+
+    <style>
+        .main-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: transparent;
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;  /* Space between logo and text */
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav li {
+            margin-left: 30px;
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: #ffffff;
+        }
+        
+        .container {
+                        max-width: 1200px;
+                        margin: 0 auto;
+                        padding: 0 15px;
+                        /* width: 100%; */
+                    }
+    </style>
+   <div class="blog-content">
+           <div class="container">
+               <article>
+                   <h1>The Rapid Growth of AI: Understanding the Hype and Reality</h1>
+                   
+                   <p>Artificial Intelligence (AI) is evolving at an unprecedented pace, and discussions around its future are intensifying. The recent rise in AI models, particularly with the introduction of increasingly sophisticated language models, has sparked a wave of speculation, excitement, and concern. But is the rapid adoption of AI sustainable, and are we heading toward a new technological revolution or an economic bubble?</p>
+                   
+                   <h2><img src="assets/images/blog-40.jpg" alt="Market Trends" class="heading-image">The AI Hype Cycle: A Look at the Market Trends</h2>
+                   
+                   <p>In recent years, AI technology has gone from being a niche research topic to a mainstream economic driver. Companies and investors are pouring billions into AI startups, while major tech giants continue to integrate AI into their ecosystems. The proliferation of generative AI tools, such as chatbots and image generators, has further fueled this growth, making AI more accessible and commercially viable.</p>
+                   
+                   <p>However, history has shown that rapid technological advancements often follow a cycle of hype, peak adoption, and eventual market correction. The dot-com boom of the late 1990s and early 2000s serves as a relevant example—where excessive enthusiasm led to inflated valuations before the bubble burst. AI, in some ways, exhibits similar characteristics, with soaring valuations and a race to be at the forefront of innovation.</p>
+                   
+                   <h2><img src="assets/images/blog-41.jpg" alt="Economic Impact" class="heading-image">The Economic Impact: Boon or Bubble?</h2>
+                   
+                   <p>The AI industry is undoubtedly bringing transformative change, but concerns remain about whether the current growth trajectory is sustainable. Investors and businesses must discern between genuine technological advancements and speculative investments. While some AI models are already generating significant revenue, many startups are yet to prove their long-term profitability.</p>
+                   
+                   <p>This raises the question: Are we witnessing a true technological revolution, or are we heading toward another speculative bubble? Unlike previous tech bubbles, AI does have proven use cases, and its adoption across industries—from healthcare to finance—suggests a more enduring impact. However, businesses need to focus on practical applications rather than simply chasing trends.</p>
+                   
+                   <h2><img src="assets/images/blog-42.jpg" alt="Future of AI" class="heading-image">The Future of AI: Innovation vs. Speculation</h2>
+                   
+                   <p>For AI to continue its trajectory without falling into the pitfalls of hype-driven investment cycles, the focus must shift toward meaningful innovation. Practical AI applications, ethical considerations, and regulatory frameworks will play a crucial role in shaping the industry's long-term success.</p>
+                   
+                   <p>Moreover, developers, researchers, and policymakers must work together to ensure AI technology is not just scalable but also sustainable. The debate over AI's role in society—whether as an economic driver, a job disruptor, or even a potential existential risk—will continue to evolve in the coming years.</p>
+                   
+                   <h2><img src="assets/images/blog-43.jpg" alt="Conclusion" class="heading-image">Conclusion</h2>
+                   
+                   <p>AI's rapid growth is undeniable, and its impact will be felt across industries. While the current pace of investment and adoption may suggest an impending correction, the technology itself is here to stay. The key question remains: How do we navigate AI's potential responsibly, ensuring that it remains an asset rather than a speculative frenzy? As the AI industry matures, it will be crucial to separate genuine innovation from hype-driven growth, fostering an ecosystem that prioritizes long-term value over short-term gains.</p>               </article>
+           </div>
+       </div>
+   
+       <style>
+           .blog-content {
+               padding: 4rem 0;
+               color: #ffffff;
+           }
+   
+           .blog-content article {
+               max-width: 800px;
+               margin: 0 auto;
+               line-height: 1.8;
+               padding: 0 20px;
+           }
+   
+           .blog-content h1 {
+               font-size: clamp(1.8rem, 5vw, 2.5rem);
+               margin-bottom: 2rem;
+               line-height: 1.2;
+           }
+   
+           .blog-content h2 {
+               font-size: clamp(1.4rem, 4vw, 1.8rem);
+               margin: 2rem 0 1rem;
+               color: #ffffff;
+           }
+   
+           .blog-content p {
+               margin-bottom: 1.5rem;
+               font-size: clamp(1rem, 2vw, 1.1rem);
+           }
+
+           .heading-image {
+               max-width: 100%;
+               height: auto;
+               margin: 1rem 0;
+           }
+
+           @media (max-width: 768px) {
+               .blog-content {
+                   padding: 2rem 0;
+               }
+           }
+       </style>
+   
+
+    <style>
+        footer {            color: #fff;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer a {
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        footer h2 {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo {
+            color: #271642;
+            font-size: clamp(4rem, 10vw, 10rem);
+            opacity: 0.4;
+            letter-spacing: -0.05em;
+            font-weight: 700;
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-logo {
+                font-size: clamp(2.5rem, 8vw, 6rem);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .footer-social {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .footer-links span {
+                display: none;
+            }
+        }
+    </style>    <footer class="py-8">
+        <div class="container">
+            <div class="footer-logo">merclytics</div>
+            
+          
+
+            <div class="footer-bottom">
+                <div>
+                    <div class="footer-links">
+                        <a href="/privacy-policy">Privacy Policy</a>
+                        <span>|</span>
+                        <a href="/terms-and-conditions">Terms & Conditions</a>
+                    </div>
+                    <div>© 2025 merclytics</div>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#">LINKEDIN</a>
+                    <a href="#">INSTAGRAM</a>
+                    <a href="#">TWITTER</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+</body>
+</html>
+ 
