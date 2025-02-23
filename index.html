@@ -7,8 +7,6 @@
     <title>Merclytics</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-   
 
 
 
@@ -318,7 +316,7 @@
             position: fixed;
             width: 65px;
             height: 65px;
-            background-color: #0b2d79;
+            background-color: rgb(12, 2, 28);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -492,7 +490,7 @@
             line-height: 1.6;
 
 
-            background: linear-gradient(-45deg, #06122C, #383f8d,#0E1937, #302b63,#06122C, #464E8C, #06122C,#0E1939);
+            background: linear-gradient(-45deg, #0f0c29, #1a1752, #302b63,#07204e, #24243e, #073282, #1a1752,#1a1752, #243B55);
             background-size: 400% 400%;
             animation: gradientBG 10s ease infinite;
         }
@@ -543,7 +541,7 @@
         .hero {
            
             color: white;
-            padding: 100px 0;
+        
             text-align: center;
         }
 
@@ -607,51 +605,13 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
     </style>
-
-
-
-
-<style>
-    .fade-up {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-    }
-
-    .fade-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-</style>
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('.fade-up').forEach(section => {
-            observer.observe(section);
-        });
-    });
-</script>
 </head>
 <body>
     <header class="main-header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <a href="#" style="display: flex; align-items: center;">
-                        <img src="assets/images/logo.png" alt="MercLytics Logo">
-                    </a>
+                    <a href="./" style="display: flex; align-items: center;"><img src="assets/images/logo.png" alt="MercLytics Logo"></a>
                     <!-- <span class="logo-text" >merclytics</span>                 -->
                 </div>
                 <!-- <nav class="main-nav">
@@ -727,1244 +687,229 @@
         .main-nav a:hover {
             color: #ffffff;
         }
-    </style>
-    <section class="hero fade-up" style="margin-top: 100px;">
-        <div class="container">
-            <div class="hero-content fade-up">
-                <h1>Empower Your World with Next-Generation AI</h1>
-                <p style="font-size: clamp(16px, 4vw, 20px); line-height: 1.6; margin: 0 auto; max-width: 90%; text-align: center;">At Merclytics, we harness AI to create intelligent automation and smarter decisions for organizations of all sizes. Our Large Action Models optimize operations and enhance user experiences to unlock new opportunities.</p>
-                <div class="cta-button fade-up" style="margin-top: 30px;">
-                    <a href="#" class="btn pulse-btn" onclick="openPopup()" 
-                       style="position: relative; overflow: hidden; transition: all 0.3s ease; padding: 10px 20px; font-size: 14px;">
-                        Join <span class="hover-text" 
-                                  style="display: inline-block; 
-                                         transition: transform 0.3s ease, opacity 0.3s ease;">
-                            the AI revolution today
-                        </span>
-                        <span class="btn-effect" 
-                              style="position: absolute; 
-                                     top: 50%; 
-                                     left: 50%; 
-                                     transform: translate(-50%, -50%); 
-                                     width: 0; 
-                                     height: 0; 
-                                     background: rgba(255,255,255,0.2); 
-                                     border-radius: 50%; 
-                                     transition: width 0.6s ease, height 0.6s ease;"></span>
-                    </a>
-                    <style>
-                        .pulse-btn {
-                            animation: pulse 2s infinite;
-                        }
-                        .pulse-btn:hover {
-                            transform: scale(1.05);
-                            box-shadow: 0 0 20px rgba(255,255,255,0.3);
-                        }
-                        .pulse-btn:hover .hover-text {
-                            transform: translateY(-2px);
-                        }
-                        .pulse-btn:hover .btn-effect {
-                            width: 200px;
-                            height: 200px;
-                            opacity: 0;
-                        }
-                        @keyframes pulse {
-                            0% { transform: scale(1); }
-                            50% { transform: scale(1.03); }
-                            100% { transform: scale(1); }
-                        }
-                    </style>
-                </div>               
-                 <!-- Popup Form -->
-                <div id="popupForm" class="popup">
-                    <div class="popup-content animate">
-                        <span class="close" onclick="closePopup()">×</span>                        <h2>Schedule Your AI Consultation</h2>
-                        <form id="waitlistForm">
-                            <div class="form-group">
-                                <input type="text" id="name" name="name" placeholder="Your Name" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" id="email" name="email" placeholder="Your Email" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="company" name="company" placeholder="Company Name" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="role" name="role" placeholder="Your Role" required>
-                            </div>
-                            <button type="submit" class="btn">Submit</button>
-                        </form>
-                    </div>
-                    <style>
-                        .animate {
-                            animation: popupAnimation 0.3s ease-out;
-                        }
-                        
-                        @keyframes popupAnimation {
-                            from {
-                                transform: scale(0.7);
-                                opacity: 0;
-                            }
-                            to {
-                                transform: scale(1);
-                                opacity: 1;
-                            }
-                        }
-                    </style>
-                    <style>
-                        @media screen and (max-width: 768px) {
-                            .popup-content {
-                                right: 15px;
-                            }
-                        }
-                    </style>
-                </div>
-                <style>
-                    .hero {
-                        padding: 20px 15px;
-                    }
-
-                    .container {
+        
+        .container {
                         max-width: 1200px;
                         margin: 0 auto;
                         padding: 0 15px;
                         /* width: 100%; */
                     }
-
-                    .hero-content {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        text-align: center;
-                        padding: 70px 15px;
-                    }
-
-                    .hero h1 {
-                        font-size: clamp(1.5rem, 4vw, 2.5rem);
-                        margin-bottom: 20px;
-                        padding: 0 10px;
-                    }
-
-                    .hero p {
-                        font-size: clamp(0.9rem, 2vw, 1.1rem);
-                        margin-bottom: 30px;
-                        max-width: 800px;
-                        padding: 0 10px;
-                    }
-
-                    .hero-image {
-                        text-align: center;
-                        
-                        margin: 0;
-                        padding: 0 15px;
-                    }
-
-                    .hero-image img {
-                        max-width: 100%;
-                        height: auto;
-                        margin: 20px auto;
-                        width: 900px;
-                    }
-
-                    @media screen and (max-width: 768px) {
-                        .hero {
-                            padding: 10px;
-                        }
-
-                        .hero-content {
-                            padding: 20px 10px;
-                        }
-
-                        .hero h1 {
-                            font-size: 1.8rem;
-                        }
-
-                        .hero p {
-                            font-size: 1rem;
-                            padding: 0 5px;
-                        }
-
-                        .hero-image img {
-                            max-width: 100%;
-                            width: 400px;
-                        }
-                    }
-
-                    @media screen and (max-width: 480px) {
-                        .container {
-                            padding: 0 10px;
-                        }
-
-                        .hero-content {
-                            padding: 15px 5px;
-                        }
-
-                        .hero h1 {
-                            font-size: 1.5rem;
-                        }
-
-                        .hero p {
-                            font-size: 0.9rem;
-                        }
-
-                        .hero-image img {
-                            max-width: 100%;
-                            width: 300px;
-                        }
-                    }
-
-                    .popup {
-                        display: none;
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-               
-                        z-index: 1000;
-                        backdrop-filter: blur(8px);
-                        padding: 10px;
-                    }
-                    
-                    .popup-content {
-                        position: relative;
-                        background-color: rgba(12, 9, 42, 0.622);
-                        margin: min(10%, 80px) auto;
-                        padding: clamp(10px, 3vw, 25px);
-                        width: min(80%, 500px);
-                        border-radius: 15px;
-                        box-shadow: 0 0 30px rgba(0,0,0,0.5);
-                        color: white;
-                        backdrop-filter: blur(10px);
-                        border: 1px solid rgba(255, 255, 255, 0.1);
-                    }
-                    
-                    .close {
-                        position: absolute;
-                        right: clamp(10px, 3vw, 15px);
-                        top: clamp(8px, 2vw, 12px);
-                        font-size: clamp(20px, 4vw, 24px);
-                        cursor: pointer;
-                        color: #fff;
-                        transition: color 0.3s ease;
-                    }
-
-                    .close:hover {
-                        color: #ddd;
-                    }
-                    
-                    .popup-content h2 {
-                        margin-bottom: clamp(12px, 3vw, 25px);
-                        text-align: center;
-                        font-size: clamp(16px, 3vw, 22px);
-                        color: #fff;
-                        text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-                    }
-                    
-                    .form-group {
-                        margin-bottom: clamp(12px, 2vw, 18px);
-                        width: 100%;
-                    }
-                    
-                    .form-group input {
-                        width: 100%;
-                        padding: clamp(8px, 2vw, 12px);
-                        border: 1px solid rgba(255, 255, 255, 0.1);
-                        border-radius: 8px;
-                        background-color: rgba(14, 3, 53, 0.8);
-                        color: white;
-                        font-size: clamp(13px, 2vw, 15px);
-                        transition: all 0.3s ease;
-                        backdrop-filter: blur(5px);
-                        box-sizing: border-box;
-                    }
-
-                    .form-group input:focus {
-                        outline: none;
-                        border-color: rgba(74, 144, 226, 0.6);
-                        box-shadow: 0 0 15px rgba(74, 144, 226, 0.3);
-                        background-color: rgba(9, 11, 46, 0.9);
-                    }
-                      button.btn {
-                          padding: 15px 40px;
-                          margin-top: 10px;
-                          box-sizing: border-box;
-                          border-radius: 30px;
-                          font-weight: 600;
-                          margin: 0 auto;
-                          display: block;
-                          transition: all 0.3s ease;
-                      }
-
-                      button.btn:hover {
-                          transform: translateY(-2px);
-                          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-                      }
-
-                      @media screen and (max-height: 600px) {
-                          .popup-content {
-                            margin: 3vh auto;
-                            max-height: 94vh;
-                            overflow-y: auto;
-                        
-                        }
-                    }
-                </style>
-
-                <script>
-                    function openPopup() {
-                        document.getElementById('popupForm').style.display = 'block';
-                        document.body.style.overflow = 'hidden';
-                    }
-                    
-                    function closePopup() {
-                        document.getElementById('popupForm').style.display = 'none';
-                        document.body.style.overflow = 'auto';
-                    }
-                    
-                    document.getElementById('waitlistForm').addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        // Add your form submission logic here
-                        closePopup();
-                    });
-
-                    // Close popup when clicking outside
-                    document.getElementById('popupForm').addEventListener('click', function(e) {
-                        if (e.target === this) {
-                            closePopup();
-                        }
-                    });
-
-                    // Handle keyboard events
-                    document.addEventListener('keydown', function(e) {
-                        if (e.key === 'Escape') {
-                            closePopup();
-                        }
-                    });
-                </script>            
-            </div>           
-             <div class="hero-image fade-up">                
-
-                <img src="assets/images/hero.png" alt="AI Business Solutions">
-            </div>         
-
-        </div>    </section>
-        <section class="stats-cards fade-up">
-        <div class="container">
-            <div class="cards-wrapper">
-                <div class="stat-card fade-up">
-                    <h2>40,000</h2>
-                    <p>Customer Interactions Automated</p>
-                </div>
-                <div class="stat-card fade-up">
-                    <h2>98%</h2>
-                    <p>Customer Query Resolution Rate</p>
-                </div>
-                <div class="stat-card fade-up">
-                    <h2>56,300</h2>
-                    <p>AI-Powered Decisions Daily</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <style>
-        .stats-cards {
-            width: 100%;
-            text-align: center;
-            padding: 60px 0;
-          
-        }
-
-        .cards-wrapper {
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .stat-card {
-            flex: 1;
-            min-width: 250px;
-            padding: 35px 25px;
-            text-align: center;
-            backdrop-filter: blur(16px);
-            border-radius: 16px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .stat-card h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin: 0 0 15px 0;
-            color: #ffffff;
-            font-weight: 800;
-            text-align: center;
-            background: linear-gradient(135deg, #ffffff, #a8a8a8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-card p {
-            font-size: clamp(1rem, 1.8vw, 1.2rem);
-            margin: 0;
-            opacity: 0.9;
-            text-align: center;
-            color: #f0f0f0;
-        }
-
-        @media (max-width: 1024px) {
-            .cards-wrapper {
-                gap: 20px;
-                padding: 0 20px;
-            }
-            .stat-card {
-                min-width: 220px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .cards-wrapper {
-                flex-direction: column;
-                gap: 25px;
-                align-items: center;
-            }
-            .stat-card {
-                width: 90%;
-                max-width: 320px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .stats-cards {
-                padding: 40px 0;
-            }
-            .stat-card {
-                width: 85%;
-                max-width: 280px;
-                padding: 25px 20px;
-            }
-        }
-    </style>    <section class="features fade-up">        
-        <div class="container">
-            <div class="features-content">
-                <h2>Experience Tailored AI Innovations</h2>
-                <p class="subtitle">Discover how custom AI solutions drive growth and efficiency.</p>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="icon">
-                            <i class="fas fa-chart-pie"></i>
-                        </div>
-                        <h3>Optimized Sales & Revenue</h3>
-                        <p>Boost conversions with data-driven insights and dynamic sales strategies that capture every opportunity.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="icon">
-                            <i class="fas fa-headphones-alt"></i>
-                        </div>
-                        <h3>24/7 AI Customer Support</h3>
-                        <p>Seamlessly integrate intelligent chat and voice assistants to handle inquiries and deliver real-time assistance.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <h3>Smart Automation Tools</h3>
-                        <p>Leverage cutting-edge AI to automate tasks, reduce manual efforts, and empower your team's productivity.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <style>
-        .features {
-            padding: 80px 20px;
-            color: #f0f0f0;
-        
-        }
-
-        .features-content {
-            text-align: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .features-content h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 1rem;
-            font-weight: 800;
-            color: #ffffff;
-        }
-
-        .features-content .subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-            margin-bottom: 2.5rem;
-            color: #cccccc;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 60px;
-            justify-items: center;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 30px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-            max-width: 350px;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .feature-card .icon {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: #ffffff;
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
-            margin-bottom: 15px;
-            color: #ffffff;
-        }
-
-        .feature-card p {
-            font-size: clamp(1rem, 2vw, 1.1rem);
-            line-height: 1.5;
-            color: #dcdcdc;
-        }
-
-        @media (max-width: 992px) {
-            .features {
-                padding: 60px 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .features {
-                padding: 40px 10px;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .feature-card {
-                padding: 20px 15px;
-                width: 90%;
-            }
-            
-            .features-content h2 {
-                font-size: 1.8rem;
-            }
-            
-            .features-content .subtitle {
-                font-size: 1rem;
-            }
-        }
     </style>
-<section class="implementation-journey fade-up">
-        <div class="max-w-4xl mx-auto pt-10 px-4">
-            <div class="w-full my-10 md:px-10">
-            <div style="text-align: center; color: #fff;" class="px-4">
-                    <h2 style="font-size: clamp(1.8rem, 5vw, 2.5rem);">AI Implementation Process</h2>
-                    <p style="font-size: clamp(1rem, 3vw, 1.2rem); max-width: 800px; margin: 0 auto;">Discover how our cutting-edge AI solutions revolutionize your business through our proven implementation methodology.</p>
-                </div>                
-                <div class="relative max-w-3xl mx-auto md:pb-20">
-                    <div class="timeline-container">
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-card">
-                                <h3 class="card-title">Discovery Phase</h3>
-                                <div class="card-content">
-                                    <p>Our experts conduct a thorough analysis of your business ecosystem to identify optimal AI integration points.</p>
-                                    <ul>
-                                        <li>In-depth business needs assessment</li>
-                                        <li>Technology stack evaluation</li>
-                                        <li>Strategic implementation planning</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-card">
-                                <h3 class="card-title">Development & Integration</h3>
-                                <div class="card-content">
-                                    <p>We develop and implement customized AI solutions focused on:</p>
-                                    <ul>
-                                        <li>Advanced machine learning algorithms</li>
-                                        <li>Natural language processing systems</li>
-                                        <li>Intelligent automation frameworks</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-card">
-                                <h3 class="card-title">Impact & Growth</h3>
-                                <div class="card-content">
-                                    <p>Our AI solutions deliver transformative results:</p>
-                                    <ul>
-                                        <li>75% faster decision-making processes</li>
-                                        <li>85% accuracy in predictive analytics</li>
-                                        <li>90% automation of repetitive tasks</li>
-                                        <li>45% reduction in operational costs</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <style>
-            .timeline-container {
-                position: relative;
-                padding: clamp(1.5rem, 4vw, 2.5rem) 0;
-                margin: 0 auto;
-                max-width: 700px;
-            }
-
-            .timeline-item {
-                display: flex;
-                margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
-                position: relative;
-                opacity: 0;
-                transform: translateY(20px);
-                animation: fadeInUp 0.8s ease forwards;
-            }
-            
-            .timeline-dot {
-                width: clamp(18px, 3vw, 24px);
-                height: clamp(18px, 3vw, 24px);
-                background: linear-gradient(45deg, #0e135692, #ffffff);
-                border-radius: 50%;
-                margin-right: clamp(1.2rem, 4vw, 2.2rem);
-                position: relative;
-                z-index: 2;
-                box-shadow: 0 0 0 4px rgba(79,172,254,0.2);
-                animation: pulse 2.5s infinite;
-            }
-
-            .timeline-card {
-                background: rgba(255,255,255,0.07);
-                border-radius: 20px;
-                padding: clamp(1.2rem, 4vw, 2.2rem);
-                flex: 1;
-                backdrop-filter: blur(12px);
-                transition: all 0.4s ease;
-                border: 1px solid rgba(255,255,255,0.1);
-                max-width: 550px;
-                margin: 0 auto;
-            }
-
-            .timeline-card:hover {
-                transform: translateY(-8px);
-                background: rgba(255,255,255,0.1);
-                box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            }
-
-            .card-title {
-                font-size: clamp(1.3rem, 3vw, 1.7rem);
-                font-weight: bold;
-                color: #ffffff;
-                margin-bottom: 1.2rem;
-            }
-
-            .card-content {
-                color: #b8c6db;
-                font-size: clamp(0.95rem, 2vw, 1.1rem);
-                line-height: 1.6;
-            }
-
-            .card-content p {
-                margin-bottom: 1.2rem;
-            }
-
-            .card-content ul {
-                list-style-type: none;
-                padding-left: clamp(0.8rem, 3vw, 1.3rem);
-            }
-
-            .card-content li {
-                margin-bottom: 0.8rem;
-                position: relative;
-            }
-
-            .card-content li:before {
-                content: "→";
-                position: absolute;
-                left: -1.2rem;
-                color: #ffffff;
-            }
-
-            @keyframes fadeInUp {
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            @keyframes pulse {
-                0% {
-                    box-shadow: 0 0 0 0 rgba(79,172,254,0.4);
-                }
-                70% {
-                    box-shadow: 0 0 0 15px rgba(79,172,254,0);
-                }
-                100% {
-                    box-shadow: 0 0 0 0 rgba(193, 193, 193, 0);
-                }
-            }
-
-            @media (max-width: 768px) {
-                .implementation-journey {
-                    width: 95%;
-                    margin: 0 auto;
-                }
-                
-                .timeline-container {
-                    padding-left: 0.8rem;
-                    padding-right: 0.8rem;
-                }
-                
-                .timeline-card {
-                    padding: 1rem;
-                    max-width: 90%;
-                }
-
-                .card-content {
-                    font-size: 0.95rem;
-                }
-
-                .card-title {
-                    font-size: 1.2rem;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .implementation-journey {
-                    width: 92%;
-                }
-
-                .timeline-container {
-                    padding-left: 0.5rem;
-                    padding-right: 0.5rem;
-                }
-
-                .timeline-dot {
-                    margin-right: 1rem;
-                    width: 15px;
-                    height: 15px;
-                }
-
-                .timeline-card {
-                    padding: 0.8rem;
-                    max-width: 88%;
-                }
-
-                .card-content {
-                    font-size: 0.9rem;
-                }
-
-                .card-title {
-                    font-size: 1.1rem;
-                    margin-bottom: 0.8rem;
-                }
-
-                .card-content li {
-                    margin-bottom: 0.5rem;
-                }
-            }
-        </style>
-    </section>
-    
-          <section class="blog-section fade-up">
-              <div class="container">
-                  <h2 class="section-title">Latest Insights</h2>
-                  <div class="blog-grid">
-                      <article class="blog-card">
-                          <div class="blog-image">
-                              <img src="assets/images/blog-23.jpg" alt="AI in Finance">
-                          </div>
-                          <div class="blog-content">
-                              <div class="blog-category">Feb. 15th, 2025 <span style="float: right;">Andy Parackal</span></div>
-                              <h3>AI's Growth and Future</h3>
-                              <p>Artificial Intelligence (AI) is evolving at an unprecedented pace, and discussions around its future are intensifying. The recent rise in AI models, particularly...</p>
-                              <a href="blog-1.html" class="read-more">Read More →</a>
-                          </div>
-                      </article>
-
-                      <article class="blog-card">
-                          <div class="blog-image">
-                              <img src="assets/images/blog-2.jpeg" alt="Machine Learning">
-                          </div>
-                          <div class="blog-content">
-                            <div class="blog-category">Feb. 16th, 2025 <span style="float: right;">Andy Parackal</span></div>
-                              <h3>The Evolution of Software: From Tools to Autonomous Agents
-                            </h3>
-                              <p>A New Era of Software Innovation. Software is evolving at an unprecedented pace, transitioning from traditional tools that support human workflows to...</p>
-                              <a href="blog-2.html" class="read-more">Read More →</a>
-                          </div>
-                      </article>
-
-                      <article class="blog-card">
-                          <div class="blog-image">
-                              <img src="assets/images/blog-3.jpeg" alt="Data Analytics">
-                          </div>
-                          <div class="blog-content">
-                              <div class="blog-category">Jan. 14th, 2025 <span style="float: right;">Andy Parackal</span></div>
-                              <h3>Revolutionize Your Business with AI Agents</h3>
-                              <p>In today’s fast-paced business landscape, staying competitive requires innovation, efficiency, and scalability. Enter AI agents—intelligent, autonomous systems ...</p>
-                              <a href="blog-3.html" class="read-more">Read More →</a>
-                          </div>
-                      </article>
-                  </div>
-              </div>
-          </section>
-
-          <style>
-              .blog-section {
-                  padding: 100px 0;
-              }
-
-              .section-title {
-                  text-align: center;
-                  color: #ffffff;
-                  font-size: 2.5rem;
-                  margin-bottom: 3rem;
-              }
-
-              .blog-grid {
-                  display: grid;
-                  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                  gap: 2rem;
-                  padding: 0 1rem;
-              }
-
-              .blog-card {
-                  background: rgba(255, 255, 255, 0.05);
-                  border-radius: 15px;
-                  overflow: hidden;
-                  transition: transform 0.3s ease, box-shadow 0.3s ease;
-                  opacity: 0;
-                  transform: translateY(30px);
-                  animation: fadeInUp 0.6s ease forwards;
-                  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                  display: flex;
-                  flex-direction: column;
-              }
-
-              .blog-card:hover {
-                  transform: translateY(-10px);
-                  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.1);
-              }
-
-              .blog-image {
-                  height: 200px;
-                  overflow: hidden;
-              }
-
-              .blog-image img {
-                  width: 100%;
-                  height: 100%;
-                  object-fit: cover;
-                  transition: transform 0.3s ease;
-              }
-
-              .blog-card:hover .blog-image img {
-                  transform: scale(1.1);
-              }
-
-              .blog-content {
-                  padding: 1.5rem;
-                  flex: 1;
-                  display: flex;
-                  flex-direction: column;
-              }
-
-              .blog-category {
-                  color: #ffffff;
-                  font-size: 0.9rem;
-                  margin-bottom: 0.5rem;
-              }
-
-              .blog-content h3 {
-                  color: #ffffff;
-                  font-size: 1.4rem;
-                  margin-bottom: 1rem;
-                  line-height: 1.3;
-                  height:2.8em;
-                  overflow: hidden;
-              }
-
-              .blog-content p {
-                  color: #a0a0a0;
-                  margin-bottom: 1.5rem;
-                  line-height: 1.6;
-                  flex: 1;
-                  height: 1em;
-                  overflow: hidden;
-              }
-
-              .read-more {
-                  color: #ffffff;
-                  text-decoration: none;
-                  font-weight: 600;
-                  transition: opacity 0.3s ease;
-                  margin-top: auto;
-              }
-
-              .read-more:hover {
-                  opacity: 0.8;
-              }
-
-              @keyframes fadeInUp {
-                  to {
-                      opacity: 1;
-                      transform: translateY(0);
-                  }
-              }
-
-              .blog-card:nth-child(1) {
-                  animation-delay: 0.2s;
-              }
-
-              .blog-card:nth-child(2) {
-                  animation-delay: 0.4s;
-              }
-
-              .blog-card:nth-child(3) {
-                  animation-delay: 0.6s;
-              }
-
-              @media (max-width: 1024px) {
-                  .blog-grid {
-                      grid-template-columns: repeat(2, 1fr);
-                  }
-                  .section-title {
-                      font-size: 2rem;
-                  }
-              }
-
-              @media (max-width: 768px) {
-                  .blog-section {
-                      padding: 40px 0;
-                  }
-                  .blog-grid {
-                      grid-template-columns: 1fr;
-                      gap: 1.5rem;
-                  }
-                  .section-title {
-                      font-size: 1.8rem;
-                      margin-bottom: 2rem;
-                  }
-                  .blog-content h3 {
-                      font-size: 1.2rem;
-                      height: auto;
-                  }
-                  .blog-image {
-                      height: 160px;
-                  }
-                  .blog-content {
-                      padding: 1.2rem;
-                  }
-                  .blog-content p {
-                      font-size: 0.9rem;
-                      margin-bottom: 1rem;
-                      height: auto;
-                  }
-              }
-
-              @media (max-width: 480px) {
-                  .blog-section {
-                      padding: 30px 0;
-                  }
-                  .blog-grid {
-                      padding: 0 0.5rem;
-                  }
-                  .blog-image {
-                      height: 140px;
-                  }
-                  .blog-content {
-                      padding: 1rem;
-                  }
-                  .section-title {
-                      font-size: 1.5rem;
-                  }
-                  .blog-content h3 {
-                      font-size: 1.1rem;
-                  }
-                  .blog-content p {
-                      font-size: 0.85rem;
-                  }
-              }
-          </style>
-
-          <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                  const observer = new IntersectionObserver((entries) => {
-                      entries.forEach(entry => {
-                          if (entry.isIntersecting) {
-                              entry.target.style.animationPlayState = 'running';
-                          }
-                      });
-                  }, {
-                      threshold: 0.1
-                  });
-
-                  document.querySelectorAll('.blog-card').forEach(card => {
-                      card.style.animationPlayState = 'paused';
-                      observer.observe(card);
-                  });
-              });
-          </script>
-
-      <section class="team-section fade-up">
-          <div class="container">
-              <h2 class="section-title fade-up">Our Team</h2>
-              <div class="team-grid">
-                  <div class="team-member">
-                      <div class="member-image">
-                          <img src="assets/images/Andy.jpg" alt="Team Member 1">
-                      </div>
-                      <h3>Andy Parackal</h3>
-                      <p class="role">Founder</p>
-                      <div class="social-links">
-                          <a href="https://www.linkedin.com/in/andy-parackal-e-acc-354b03120?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link"><i class="fab fa-linkedin"></i></a>
-                          <a href="https://x.com/Andyparackal?t=D33Z697JVvtOGxgdyiy_Pw&s=09" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
-                      </div>
-                      <a href="Andy-pro.html" class="know-more">View More <i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
-                  </div>
-
-                  <div class="team-member">
-                      <div class="member-image">
-                          <img src="assets/images/Umesh-1.jpg" alt="Team Member 2">
-                      </div>
-                      <h3>Umesh Rajani</h3>
-                      <p class="role">Founder, Ace On Data</p>
-                      <div class="social-links">
-                        <a href="https://x.com/umeshonai?s=21" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
-                      </div>
-                      <a href="umesh-pro.html" class="know-more">View More <i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
-                  </div>
-
-                  <div class="team-member">
-                      <div class="member-image">
-                          <img src="assets/images/Adam.jpg" alt="Team Member 3">
-                      </div>
-                      <h3>Adam Jones</h3>
-                      <p class="role">Founder of Chatboo</p>
-                      <div class="social-links">
-                        <a href="https://x.com/chatbooapp?s=21" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
-                      </div>
-                      <a href="Adam-pro.html" class="know-more">View More <i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
-                  </div>
-
-                  <div class="team-member">
-                      <div class="member-image">
-                          <img src="assets/images/developer.webp" alt="Team Member 4">
-                      </div>
-                      <h3>Ashish Kumar</h3>
-                      <p class="role">Google Developer Expert</p>
-                      <div class="social-links">
-                          <a href="https://x.com/imdigitalashish?s=21" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
-                      </div>
-                      <a href="ashish-profile.html" class="know-more">View More <i class="fas fa-arrow-right" style="color: #ffffff;"></i></a>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <style>
-          .team-section {
-              padding: 100px 0;
-          }
-
-          .section-title {
-              text-align: center;
-              color: #ffffff;
-              font-size: 2.5rem;
-              margin-bottom: 3rem;
-              position: relative;
-          }
-
-          .team-grid {
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-              gap: 3rem;
-              max-width: 1200px;
-              margin: 0 auto;
-              padding: 0 20px;
-          }
-
-          .team-member {
-              text-align: center;
-              background: rgba(255, 255, 255, 0.03);
-              border-radius: 15px;
-              padding: 2rem;
-              transition: transform 0.3s ease;
-          }
-
-          .team-member:hover {
-              transform: translateY(-10px);
-          }
-
-          .member-image {
-              width: 200px;
-              height: 200px;
-              margin: 0 auto 1.5rem;
-              border-radius: 50%;
-              overflow: hidden;
-              border: 3px solid #ffffff;
-          }
-
-          .member-image img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-          }
-
-          .team-member h3 {
-              color: #ffffff;
-              font-size: 1.5rem;
-              margin-bottom: 0.5rem;
-          }
-
-          .team-member .role {
-              color: #ffffff;
-              font-size: 1rem;
-              margin-bottom: 1.5rem;
-              font-weight: 600;
-          }
-
-          .social-links {
-              display: flex;
-              justify-content: center;
-              gap: 1rem;
-              margin-bottom: 1rem;
-          }
-
-          .social-link {
-              color: #ffffff;
-              font-size: 1.2rem;
-              transition: color 0.3s ease;
-          }
-
-          .social-link:hover {
-              color: #ffffff;
-          }
-
-          .know-more {
-              display: inline-flex;
-              align-items: center;
-              gap: 0.5rem;
-              color: #ffffff;
-              text-decoration: none;
-              font-size: 0.9rem;
-              transition: opacity 0.3s ease;
-          }
-
-          .know-more:hover {
-              opacity: 0.8;
-          }
-
-          @media (max-width: 768px) {
-              .team-section {
-                  padding: 50px 0;
-              }
-
-              .section-title {
-                  font-size: 2rem;
-                  margin-bottom: 2rem;
-              }
-
-              .team-grid {
-                  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                  gap: 2rem;
-                  padding: 0 15px;
-              }
-
-              .member-image {
-                  width: 150px;
-                  height: 150px;
-              }
-
-              .team-member h3 {
-                  font-size: 1.2rem;
-              }
-          }
-
-          @media (max-width: 480px) {
-              .team-section {
-                  padding: 30px 0;
-              }
-
-              .section-title {
-                  font-size: 1.5rem;
-                  margin-bottom: 1.5rem;
-              }
-
-              .team-grid {
-                  grid-template-columns: 1fr;
-                  gap: 1.5rem;
-                  padding: 0 10px;
-              }
-
-              .member-image {
-                  width: 120px;
-                  height: 120px;
-              }
-
-              .team-member {
-                  padding: 1.5rem;
-              }
-
-              .team-member h3 {
-                  font-size: 1.1rem;
-              }
-
-              .team-member .role {
-                  font-size: 0.9rem;
-              }
-          }
-      </style>    <style>
-        footer {
-            color: #fff;
+   
+       <div class="blog-content">
+           <div class="container">
+               <article>
+                   <h1>The Evolution of Software: From Tools to Autonomous Agents</h1>
+                   
+                   <section class="introduction">
+                       <h2>Introduction: A New Era of Software Innovation</h2>
+                       <p>Software is evolving at an unprecedented pace, transitioning from traditional tools that support human workflows to autonomous agents capable of executing tasks and making decisions independently. This paradigm shift is not merely a technological advancement—it represents a fundamental transformation in how we interact with and leverage software in our personal and professional lives.</p>
+                       <p>Imagine a world where software doesn't just assist you in your work but actively works for you, handling complex tasks autonomously and delivering results with minimal human intervention. This article explores the evolution of software through three distinct phases—workflow-based systems, AI integration, and systems of agents—while highlighting real-world applications, economic implications, and the future potential of this revolution. Let's dive into the journey of software evolution, step by step.</p>
+                   </section>
+   
+                   <section class="phase-1">
+                       <h2>Phase 1: Workflow-Based Systems—Manual Processes and Inefficiencies</h2>
+                       <img src="assets/images/phase-2.jpeg" alt="AI Integration Illustration" class="section-image">
+                       <p>In the early days of software development, applications like Customer Relationship Management (CRM) systems were primarily designed as workflow-based tools. These systems relied heavily on manual data entry, requiring users to input structured data to enable basic functionality. While these tools were groundbreaking at the time, they were limited by their dependence on human input and the quality of the data provided.</p>
+                       
+                       <h3>The Challenge of Manual Processes</h3>
+                       <p>Manual processes were inherently time-consuming and prone to errors. For example, a salesperson updating a CRM might need to enter every client interaction—phone calls, emails, meeting notes—manually. Any missed detail, incomplete information, or human error could significantly diminish the system's effectiveness. The result was often inefficient workflows, incomplete datasets, and biased outcomes based on the limitations of human input. This phase laid the foundation for modern software but highlighted a critical need for automation and intelligence to reduce human effort and improve accuracy.</p>
+                   </section>
+   
+                   <section class="phase-2">
+                       <h2>Phase 2: AI Integration—Bridging Structured and Unstructured Data</h2>
+                       <img src="assets/images/phase-3.jpeg" alt="AI Integration Illustration" class="section-image">
+                       <p>The rise of Artificial Intelligence (AI), particularly with the advent of Large Language Models (LLMs), marked a significant breakthrough in software development. AI enabled software to process not only structured data (like spreadsheets and databases) but also unstructured data, such as emails, documents, and conversational data. This expansion of data processing capabilities transformed software from rigid tools into smarter, more adaptive systems.</p>
+                       
+                       <h3>The Impact of AI on Software</h3>
+                       <p>AI-powered tools began identifying patterns, making recommendations, and automating repetitive tasks. For instance, AI could summarize customer emails, suggest follow-up actions, or predict sales outcomes based on historical data. However, these systems still required significant human oversight to manage workflows, validate outputs, and ensure alignment with business goals. While AI integration was a major step forward, it wasn't yet capable of fully autonomous operation.</p>
+                       
+                       <h3>Example in Action</h3>
+                       <p>Consider a sales team using an AI-enhanced CRM. The system might analyze incoming emails and suggest follow-ups for high-priority leads, but a human still needed to review the recommendations, execute the actions, and update the system manually. This hybrid approach improved efficiency but fell short of true autonomy.</p>
+                   </section>
+   
+                   <section class="phase-3">
+                       <h2>Phase 3: Systems of Agents—Autonomous Collaboration for Goal Achievement</h2>
+                       <img src="assets/images/phase-4.jpeg" alt="Systems of Agents Illustration" class="section-image">
+                       <p>We are now entering a transformative era defined by Systems of Agents—AI-powered systems that operate collaboratively, like a team of specialists, to achieve specific goals. Unlike previous phases, these agents don't require constant human oversight. Instead, they break down complex objectives into smaller, actionable tasks, execute those tasks autonomously, and combine the results to deliver a complete solution.</p>
+                       
+                       <h3>How Systems of Agents Operate</h3>
+                       <p>Systems of Agents function through a three-step process:</p>
+                       <ol>
+                           <li>Decompose Goals into Tasks: Agents analyze a user-defined goal (e.g., "Close a sales deal") and break it into smaller, manageable tasks (e.g., schedule a follow-up call, send a discount offer).</li>
+                           <li>Execute Tasks: The agents perform these tasks in sequence or parallel, leveraging real-time data and advanced algorithms.</li>
+                           <li>Combine Outputs: The agents integrate their outputs to deliver a final result, such as a completed sales process or a unified patient profile.</li>
+                       </ol>
+                       <p>This level of autonomy represents a game-changer, allowing software to act as a digital workforce, tirelessly working in the background to achieve user-defined objectives.</p>
+                   </section>
+   
+                   <section class="applications">
+                       <h2>Real-World Applications of Systems of Agents</h2>
+                       
+                       <h3>Sales: Streamlining Processes with Real-Time Intelligence</h3>
+                       <img src="assets/images/phase-5.jpeg" alt="Systems of Agents Illustration" class="section-image">
+                       <p>In sales, agent systems analyze real-time signals—emails, calls, chat patterns, and CRM data—to optimize workflows and improve outcomes. For instance, an agent system might:</p>
+                       <ul>
+                           <li>Detect which deals are likely to close soon based on customer interactions.</li>
+                           <li>Recommend follow-up actions for leads requiring attention.</li>
+                           <li>Escalate stagnating deals to senior staff for intervention.</li>
+                       </ul>
+                       
+                       <h4>Scenario</h4>
+                       <p>Imagine a sales manager setting a goal: "Close Deal A by next week." The agent system would analyze real-time data, identify key customer interactions, suggest actions like scheduling a reminder email or offering a discount, and automate follow-ups—all without manual CRM updates. This results in smarter, faster decisions with minimal human effort.</p>
+                       
+                       <h3>Healthcare: Transforming Patient Intake with Efficiency</h3>
+                       <img src="assets/images/phase-6.jpeg" alt="Systems of Agents Illustration" class="section-image">
+                       <p>In healthcare, agent systems are revolutionizing administrative processes, such as patient intake. Agents can:</p>
+                       <ul>
+                           <li>Pull data from transcripts, forms, and APIs (e.g., insurance records, medical histories).</li>
+                           <li>Consolidate this information into a unified patient profile.</li>
+                       </ul>
+                       
+                       <h4>Scenario</h4>
+                       <p>When a patient arrives at a clinic, an agent system processes their intake forms, retrieves insurance data via APIs, and pulls medical history from a repository. Within minutes, it generates a complete patient profile, freeing doctors from hours of paperwork and allowing them to focus on patient care.</p>
+                   </section>
+   
+                   <section class="future">
+                       <h2>The Future: Service-as-Software</h2>
+                       <img src="assets/images/phase-7.jpeg" alt="Systems of Agents Illustration" class="section-image">
+                       <p>The ultimate vision for software is "Service-as-Software," where applications act like highly trained teams, delivering services autonomously without requiring constant human input. This marks a stark contrast to traditional Software-as-a-Service (SaaS) models, which depend on users to input data and execute tasks manually.</p>
+                       
+                       <h3>Traditional SaaS vs. Service-as-Software</h3>
+                       <ul>
+                           <li>Traditional SaaS: Users input data into tools (e.g., a CRM or project management app), manually execute tasks through multiple steps, and achieve results only after significant effort.</li>
+                           <li>Service-as-Software: Users set a goal (e.g., "Generate a sales report"), and autonomous agents decompose the goal into tasks, execute them, and deliver completed results automatically.</li>
+                       </ul>
+                       <p>This shift from tools to services redefines software's role, transforming it into a proactive partner capable of handling end-to-end processes with minimal intervention.</p>
+                   </section>
+   
+                   <section class="building-systems">
+                       <h2>Building Effective Systems of Agents</h2>
+                       <p>To unlock the full potential of Systems of Agents, businesses must focus on three key factors:</p>
+                       <ol>
+                           <li>Proximity to Data: Position agents close to data sources to access real-time insights, ensuring timely and accurate decision-making.</li>
+                           <li>Autonomy: Enable agents to act independently, reducing the need for human intervention and increasing efficiency.</li>
+                           <li>Capability: Equip agents with the ability to process unstructured data (e.g., emails, voice recordings) and transform it into actionable results.</li>
+                       </ol>
+                       <p>By prioritizing these elements, organizations can build robust, scalable systems that drive innovation and competitiveness.</p>
+                   </section>
+   
+                   <section class="economic-implications">
+                       <h2>Economic Implications of Autonomous Software</h2>
+                       <p>The rise of Systems of Agents isn't just a technological shift—it has profound economic implications. Businesses can:</p>
+                       <ul>
+                           <li>Scale operations using AI systems instead of hiring additional human labor.</li>
+                           <li>Reallocate budgets traditionally spent on training and hiring to invest in advanced AI solutions.</li>
+                       </ul>
+                       
+                       <h3>The Opportunity</h3>
+                       <p>Industries that adopt Systems of Agents early will gain a significant competitive advantage. Imagine scaling your business operations without proportionally increasing costs—a reality made possible by autonomous software.</p>
+                   </section>
+   
+                   <section class="conclusion">
+                       <h2>Conclusion: Redefining Software for the Future</h2>
+                       <p>Systems of Agents are redefining the software landscape, evolving from simple tools to autonomous services that deliver unmatched efficiency, accuracy, and scalability. These systems don't merely assist us in our work—they do the work for us, handling complex tasks independently and delivering results that transform industries.</p>
+                       <p>As we move forward, the potential for innovation is limitless. From sales and healthcare to countless other sectors, Systems of Agents promise to revolutionize how we live and work.</p>
+                   </section>
+   
+                   <section class="call-to-action">
+                       <h2>Call to Action: Build Your Own System of Agents</h2>
+                       <p>As a businessman passionate about AI innovation, I've witnessed firsthand the transformative power of Systems of Agents. If you're inspired to bring this technology into your business or explore building your own autonomous system, I'd love to connect. Reach out via direct message, and let's collaborate to create something extraordinary together. The future of software is here—let's shape it!</p>
+                   </section>
+               </article>
+           </div>
+       </div>
+   
+       <style>
+           .blog-content {
+               padding: 60px 0;
+               color: #ffffff;
+           }
+   
+           .blog-content article {
+               max-width: 800px;
+               margin: 0 auto;
+               line-height: 1.6;
+               padding: 0 20px;
+           }
+   
+           .blog-content h1 {
+               font-size: clamp(1.8rem, 4vw, 2.5rem);
+               margin-bottom: 2rem;
+               color: #ffffff;
+           }
+   
+           .blog-content h2 {
+               font-size: clamp(1.5rem, 3vw, 2rem);
+               margin: 2rem 0 1rem;
+               color: #ffffff;
+           }
+   
+           .blog-content h3 {
+               font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+               margin: 1.5rem 0 1rem;
+               color: #ffffff;
+           }
+   
+           .blog-content h4 {
+               font-size: clamp(1rem, 2vw, 1.25rem);
+               margin: 1.25rem 0 1rem;
+               color: #ffffff;
+           }
+   
+           .blog-content p {
+               margin-bottom: 1.5rem;
+               font-size: clamp(1rem, 1.5vw, 1.1rem);
+           }
+   
+           .blog-content ul, .blog-content ol {
+               margin-bottom: 1.5rem;
+               padding-left: 2rem;
+           }
+   
+           .blog-content li {
+               margin-bottom: 0.5rem;
+               font-size: clamp(1rem, 1.5vw, 1.1rem);
+           }
+   
+           .blog-content section {
+               margin-bottom: 3rem;
+           }
+   
+           .section-image {
+               width: 100%;
+               height: auto;
+               max-width: 100%;
+               margin: 1.5rem 0;
+               border-radius: 8px;
+           }
+   
+           .call-to-action {
+               background-color: #f8f9fa16;
+               padding: 2rem;
+               border-radius: 8px;
+               margin-top: 3rem;
+           }
+
+           @media (max-width: 768px) {
+               .blog-content {
+                   padding: 30px 0;
+                   margin-top: 20px;
+               }
+               
+               .blog-content article {
+                   padding: 0 15px;
+               }
+               
+               .call-to-action {
+                   padding: 1.5rem;
+               }
+           }
+       </style>
+   
+       
+    <style>
+        footer {            color: #fff;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -2090,3 +1035,4 @@
 
 </body>
 </html>
+ 
