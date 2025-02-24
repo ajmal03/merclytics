@@ -766,21 +766,28 @@
                 <img src="assets/images/hero.png" alt="AI Business Solutions">
             </div>         
 
-        </div>    </section>
+        </div>   
+    
+     </section>
+
+
         <section class="stats-cards fade-up">
         <div class="container">
             <div class="cards-wrapper">
                 <div class="stat-card fade-up">
-                    <h2>40,000</h2>
-                    <p>Customer Interactions Automated</p>
+                    <i class="fas fa-chart-line"></i>
+                    <h2>Predictive Al Analytics</h2>
+                    <p>Turning data into actionable insights</p>
                 </div>
                 <div class="stat-card fade-up">
-                    <h2>98%</h2>
-                    <p>Customer Query Resolution Rate</p>
+                    <i class="fas fa-robot"></i>
+                    <h2>Al-Powered Automation</h2>
+                    <p>Streamlining workflows for efficiency</p>
                 </div>
                 <div class="stat-card fade-up">
-                    <h2>56,300</h2>
-                    <p>AI-Powered Decisions Daily</p>
+                    <i class="fas fa-expand-arrows-alt"></i>
+                    <h2>Scalable Al Solutions</h2>
+                    <p>Tailored for your business growth</p>
                 </div>
             </div>
         </div>
@@ -790,23 +797,23 @@
         .stats-cards {
             width: 100%;
             text-align: center;
-            padding: 60px 0;
-          
+            padding: 40px 0;
         }
 
         .cards-wrapper {
             display: flex;
             justify-content: space-between;
-            gap: 30px;
+            gap: 20px;
             flex-wrap: wrap;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 15px;
         }
 
         .stat-card {
             flex: 1;
-            min-width: 250px;
-            padding: 35px 25px;
+            min-width: 220px;
+            padding: 25px 20px;
             text-align: center;
             backdrop-filter: blur(16px);
             border-radius: 16px;
@@ -816,6 +823,13 @@
             background: rgba(255, 255, 255, 0.05);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            opacity: 0.9;
         }
 
         .stat-card:hover {
@@ -836,10 +850,10 @@
         }
 
         .stat-card h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin: 0 0 15px 0;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            margin: 0 0 10px 0;
             color: #ffffff;
-            font-weight: 800;
+            font-weight: 700;
             text-align: center;
             background: linear-gradient(135deg, #ffffff, #a8a8a8);
             -webkit-background-clip: text;
@@ -847,7 +861,7 @@
         }
 
         .stat-card p {
-            font-size: clamp(1rem, 1.8vw, 1.2rem);
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
             margin: 0;
             opacity: 0.9;
             text-align: center;
@@ -856,42 +870,53 @@
 
         @media (max-width: 1024px) {
             .cards-wrapper {
-                gap: 20px;
-                padding: 0 20px;
+                gap: 15px;
             }
             .stat-card {
-                min-width: 220px;
+                min-width: 200px;
+                padding: 20px 15px;
             }
         }
 
         @media (max-width: 768px) {
             .cards-wrapper {
                 flex-direction: column;
-                gap: 25px;
+                gap: 20px;
                 align-items: center;
             }
             .stat-card {
-                width: 90%;
-                max-width: 320px;
+                width: 100%;
+                max-width: 300px;
+            }
+            .stat-card h2 {
+                font-size: clamp(1.3rem, 2.5vw, 2rem);
             }
         }
 
         @media (max-width: 480px) {
             .stats-cards {
-                padding: 40px 0;
+                padding: 30px 0;
             }
             .stat-card {
-                width: 85%;
-                max-width: 280px;
-                padding: 25px 20px;
+                width: 100%;
+                max-width: 260px;
+                padding: 20px 15px;
+            }
+            .stat-card i {
+                font-size: 1.5rem;
+            }
+            .stat-card h2 {
+                font-size: clamp(1.2rem, 2vw, 1.8rem);
+            }
+            .stat-card p {
+                font-size: clamp(0.8rem, 1.2vw, 1rem);
             }
         }
     </style>    
     
     <!-- Video Section -->
 <section class="video-section">
-    <div class="container">
-        <div class="video-wrapper">
+    <div class="container">        <div class="video-wrapper">
             <div class="video-content">
                 <div class="video-player">
                     <video class="position-absolute overlay-img-game" controls autoplay muted>
