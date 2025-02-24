@@ -886,7 +886,156 @@
                 padding: 25px 20px;
             }
         }
-    </style>    <section class="features fade-up">        
+    </style>    
+    
+    <!-- Video Section -->
+<section class="video-section">
+    <div class="container">
+        <div class="video-wrapper">
+            <div class="video-content">
+                <div class="video-player">
+                    <video class="position-absolute overlay-img-game" controls autoplay muted>
+                        <source src="assets/videos/AI.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .video-section {
+            padding: 100px 0;
+           
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 80% !important;
+            margin: 0 auto;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .video-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .video-player {
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+        }
+
+        .overlay-img-game {
+            width: 100%;
+            left: 50%;
+            transform: translate(-50%);
+            border-radius: 15px;
+            margin: 0 auto;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            object-fit: cover;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Large screens */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1200px !important;
+            }
+        }
+
+        /* Desktop */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 85% !important;
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 991px) {
+            .video-section {
+                padding: 80px 0;
+            }
+            
+            .container {
+                max-width: 90% !important;
+            }
+        }
+
+        /* Mobile Large */
+        @media (max-width: 767px) {
+            .video-section {
+                padding: 60px 0;
+            }
+
+            .container {
+                max-width: 95% !important;
+            }
+        }
+
+        /* Mobile Small */
+        @media (max-width: 480px) {
+            .video-section {
+                padding: 40px 0;
+            }
+
+            .container {
+                max-width: 100% !important;
+                padding: 0 15px;
+            }
+
+            .overlay-img-game {
+                border-radius: 10px;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.overlay-img-game');
+            
+            // Enable inline playback
+            video.setAttribute('playsinline', '');
+            
+            // Play video when it's ready
+            video.play().catch(function(error) {
+                console.log("Video autoplay failed:", error);
+            });
+
+            // Handle visibility change
+            document.addEventListener("visibilitychange", function() {
+                if (document.hidden) {
+                    video.pause();
+                } else {
+                    video.play().catch(function(error) {
+                        console.log("Video autoplay failed:", error);
+                    });
+                }
+            });
+
+            // Handle orientation change
+            window.addEventListener('orientationchange', function() {
+                setTimeout(function() {
+                    video.style.width = '100%';
+                }, 100);
+            });
+        });
+    </script>
+</section>
+
+
+    
+    <section class="features fade-up">        
         <div class="container">
             <div class="features-content">
                 <h2>Experience Tailored AI Innovations</h2>
