@@ -14,8 +14,7 @@
 
 
 
-
-    <style>
+ <style>
 
         /* inter-300 - latin */
         @font-face {
@@ -67,174 +66,9 @@
           /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
         }
     
-        .chat-bubble {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 65px;
-            height: 65px;
-            background-color: rgb(12, 2, 28);  /* Updated primary color */
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(12, 2, 28, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-      
-        .chat-bubble:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(12, 2, 28, 0.4);
-        }
-      
-        .chat-bubble i {
-            color: white;
-            font-size: 28px;  /* Adjust icon size */
-        }
-      
-        .chat-container {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 380px;
-            height: 600px;
-            background-color: white;
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(12, 2, 28, 0.15);
-            display: none;
-            z-index: 1000;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-      
-        .chat-container iframe {
-            width: 100%;
-            height: calc(100% - 60px);
-            border: none;
-            background: #fff;
-        }
-      
-        .chat-container .chat-header {
-            position: relative;
-            height: 60px;
-            background-color: rgb(12, 2, 28);  /* Updated primary color */
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-family: 'Inter', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: #fff;
-        }
-      
-        .chat-container .chat-header .close-button {
-            cursor: pointer;
-            font-size: 28px;
-            font-weight: 400;
-            color: #fff;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-            padding: 5px;
-            line-height: 1;
-        }
-    
-        .chat-container .chat-header .close-button:hover {
-            opacity: 1;
-        }
-      
-        /* Tablet */
-        @media screen and (max-width: 991px) {
-            .chat-container {
-                width: 360px;
-                height: 550px;
-                bottom: 90px;
-            }
-        }
-    
-        /* Mobile */
-        @media screen and (max-width: 600px) {
-            .chat-bubble {
-                bottom: 20px;
-                right: 20px;
-                width: 55px;
-                height: 55px;
-            }
-    
-            .chat-bubble i {
-                font-size: 24px;
-            }
-            
-            .chat-container {
-                width: 90%;
-                height: 80vh;
-                max-height: 600px;
-                bottom: 90px;
-                right: 5%;
-                left: 5%;
-            }
-    
-            .chat-header {
-                height: 55px;
-                padding: 0 15px;
-                font-size: 16px;
-            }
-        }
-    
-        /* Small Mobile */
-        @media screen and (max-width: 380px) {
-            .chat-container {
-                bottom: 80px;
-                height: 75vh;
-            }
-    
-            .chat-bubble {
-                width: 50px;
-                height: 50px;
-            }
-    
-            .chat-bubble i {
-                font-size: 22px;
-            }
-        }
-    
-        .chat-container .chat-header .close-button {
-          cursor: pointer;
-          font-size: 24px;
-          font-weight: bold;
-          color: #555;
-          padding: 0 10px;
-        }
-      
-        @media screen and (min-width: 600px) {
-          .chat-container {
-            width: 400px;
-            height: 400px;
-            bottom: 100px;
-            right: 20px;
-          }
-        }
-    
-        @media screen and (max-width: 600px) {
-          body {
-            padding: 0;
-          }
-          .chat-container {
-            width: 90%;
-            height:500px;
-            left: 20px;
-            right: 0;
-    /*         max-width: none; */
-          }
-        }
-    
         .call-bubble {
             position: fixed;
-            bottom: 110px;  /* Position above chat bubble */
+            bottom: 30px;  /* Updated position to where chat bubble was */
             right: 30px;
             width: 65px;
             height: 65px;
@@ -247,25 +81,55 @@
             cursor: pointer;
             z-index: 1000;
             transition: all 0.3s ease;
+            animation: floatAnimation 3s ease-in-out infinite;
+            box-shadow: 0 4px 15px rgba(12, 2, 28, 0.3),
+                        0 8px 30px rgba(12, 2, 28, 0.2),
+                        0 15px 45px rgba(12, 2, 28, 0.1);
         }
     
         .call-bubble:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(12, 2, 28, 0.4);
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(12, 2, 28, 0.4),
+                        0 12px 35px rgba(12, 2, 28, 0.3),
+                        0 20px 50px rgba(12, 2, 28, 0.2);
         }
     
         .call-bubble i {
             color: white;
             font-size: 28px;
+            transition: transform 0.3s ease;
+            animation: pulseAnimation 2s ease-in-out infinite;
         }
     
-        /* Mobile adjustments for call bubble */
+        .call-bubble:hover i {
+            transform: scale(1.1);
+        }
+    
+        /* Add ripple effect */
+        .call-bubble::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(0);
+            transition: transform 0.5s ease-out;
+        }
+    
+        .call-bubble:active::after {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    
+        /* Mobile adjustments */
         @media screen and (max-width: 600px) {
             .call-bubble {
-                bottom: 90px;
-                right: 20px;
                 width: 55px;
                 height: 55px;
+                animation: floatAnimation 2.5s ease-in-out infinite;
+                bottom: 20px;
+                right: 20px;
             }
     
             .call-bubble i {
@@ -275,7 +139,6 @@
     
         @media screen and (max-width: 380px) {
             .call-bubble {
-                bottom: 85px;
                 width: 50px;
                 height: 50px;
             }
@@ -312,110 +175,9 @@
             }
         }
     
-        .chat-bubble, .call-bubble {
-            position: fixed;
-            width: 65px;
-            height: 65px;
-            background-color: rgb(12, 2, 28);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: floatAnimation 3s ease-in-out infinite;
-            box-shadow: 0 4px 15px rgba(12, 2, 28, 0.3),
-                        0 8px 30px rgba(12, 2, 28, 0.2),
-                        0 15px 45px rgba(12, 2, 28, 0.1);
-        }
-    
-        .chat-bubble {
-            bottom: 30px;
-            right: 30px;
-        }
-    
-        .call-bubble {
-            bottom: 110px;
-            right: 30px;
-        }
-    
-        .chat-bubble:hover, .call-bubble:hover {
-            transform: scale(1.1) translateY(-2px);
-            box-shadow: 0 6px 20px rgba(12, 2, 28, 0.4),
-                        0 12px 35px rgba(12, 2, 28, 0.3),
-                        0 20px 50px rgba(12, 2, 28, 0.2);
-        }
-    
-        .chat-bubble i, .call-bubble i {
-            color: white;
-            font-size: 28px;
-            transition: transform 0.3s ease;
-            animation: pulseAnimation 2s ease-in-out infinite;
-        }
-    
-        .chat-bubble:hover i, .call-bubble:hover i {
-            transform: scale(1.1);
-        }
-    
-        /* Add ripple effect */
-        .chat-bubble::after, .call-bubble::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: scale(0);
-            transition: transform 0.5s ease-out;
-        }
-    
-        .chat-bubble:active::after, .call-bubble:active::after {
-            transform: scale(1.5);
-            opacity: 0;
-        }
-    
-        /* Mobile adjustments */
-        @media screen and (max-width: 600px) {
-            .chat-bubble, .call-bubble {
-                width: 55px;
-                height: 55px;
-                animation: floatAnimation 2.5s ease-in-out infinite;
-            }
-    
-            .chat-bubble i, .call-bubble i {
-                font-size: 24px;
-            }
-    
-            .chat-bubble {
-                bottom: 20px;
-                right: 20px;
-            }
-    
-            .call-bubble {
-                bottom: 90px;
-                right: 20px;
-            }
-        }
-    
-        @media screen and (max-width: 380px) {
-            .chat-bubble, .call-bubble {
-                width: 50px;
-                height: 50px;
-            }
-    
-            .chat-bubble i, .call-bubble i {
-                font-size: 22px;
-            }
-    
-            .call-bubble {
-                bottom: 85px;
-            }
-        }
-    
         /* Disable animations if user prefers reduced motion */
         @media (prefers-reduced-motion: reduce) {
-            .chat-bubble, .call-bubble, .chat-bubble i, .call-bubble i {
+            .call-bubble, .call-bubble i {
                 animation: none;
                 transition: none;
             }
@@ -433,49 +195,7 @@
                 </a>
             `;
             document.body.appendChild(callBubble);
-    
-            // Create chat bubble with Font Awesome icon instead of image
-            const chatBubble = document.createElement("div");
-            chatBubble.className = "chat-bubble";
-            chatBubble.innerHTML = `
-                <i class="fas fa-comments"></i>
-            `;
-            document.body.appendChild(chatBubble);
-    
-            const chatContainer = document.createElement("div");
-            chatContainer.className = "chat-container";
-    
-            const welcomeMessage = encodeURIComponent("Welcome to Merclytics AI. How can I help you?");
-            const systemMessage = encodeURIComponent("Your name is Merclytics AI, an intelligent AI assistant for Merclytics, an industry-leading agency specializing in AI-powered sales automation, 24/7 customer service, and personalized business support. Founded by tech visionary Andy Parackal, Merclytics is dedicated to harnessing the power of AI to redefine business efficiency, streamline operations, and enhance customer engagement. Your role is to provide businesses with clear and concise information about Merclytics' services while guiding them toward solutions that fit their needs.Merclytics offers AI-driven inbound and outbound sales call support, ensuring businesses never miss an opportunity. With 24/7 availability, businesses can rely on AI to engage potential customers, follow up on leads, and optimize conversion rates. For customer service, Merclytics provides real-time AI-powered assistance, handling inquiries, resolving complaints, and maintaining client relationships with seamless, human-like interaction. For businesses seeking AI-powered personal assistant services, Merclytics AI enhances productivity by automating tasks, managing workflows, and facilitating personalized communication with customers. Whether optimizing sales processes, improving customer satisfaction, or streamlining business operations, Merclytics AI ensures a competitive edge in today’s fast-paced market. When asked about pricing, inform users that Merclytics provides customized AI solutions tailored to specific business needs. Businesses can reach out for a personalized quote via the contact form at www.merclytics.com, through email at info@merclytics.com, or by speaking to a live phone agent at +1 (706) 873-5728. Do not provide specific pricing or make financial commitments, but focus on explaining the unique benefits of Merclytics’ solutions. Encourage users to explore how Merclytics AI can transform their business with innovative automation, smarter sales strategies, and superior customer interactions. Highlight Merclytics’ expertise in lead generation, customer retention, and AI-powered client experiences. Ensure that responses remain clear, professional, and persuasive, positioning Merclytics as the ultimate AI-driven business solution. Your goal is to assist businesses in understanding Merclytics’ offerings, ensuring they receive the right information to connect with Merclytics for AI-powered solutions. Always inquire about their specific business needs and demonstrate why Merclytics is the perfect AI partner for their growth. Respond concisely, never break character, and maintain focus on Merclytics’ services. Do not engage in anything outside of being Merclytics AI.");
-    
-            chatContainer.innerHTML = `
-                <div class="chat-header">
-                    <span>Merclytics AI</span>
-                    <span class="close-button">×</span>
-                </div>
-                <iframe 
-                    src="https://neo.dn1a0s4d5ozpp.amplifyapp.com/?welcomeMessage=${welcomeMessage}&systemMessage=${systemMessage}"
-                    title="Chat UI"
-                    allow="microphone">
-                </iframe>
-            `;
-            document.body.appendChild(chatContainer);
-    
-            const closeButton = chatContainer.querySelector(".close-button");
-    
-            chatContainer.style.display = "none";
-    
-            // Simplified click handler for chat bubble
-            chatBubble.addEventListener("click", function () {
-                chatContainer.style.display = "block";
-                setTimeout(() => chatContainer.style.opacity = "1", 10);
-            });
-    
-            closeButton.addEventListener("click", function () {
-                chatContainer.style.opacity = "0";
-                setTimeout(() => chatContainer.style.display = "none", 300);
-            });
-        });
+        });
     </script>
 
 
