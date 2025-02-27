@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/images/fav-icon.png" type="image/x-icon">
+    <title>Merclytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+
+
+
+
+
+ <style>
+
+        /* inter-300 - latin */
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 300;
+          font-display: swap;
+          src: local(''),
+            url('fonts/inter-v12-latin-300.woff2') format('woff2'),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-300.woff') format('woff');
+          /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+    
+        /* inter-400 - latin */
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: local(''),
+            url('fonts/inter-v12-latin-regular.woff2') format('woff2'),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-regular.woff') format('woff');
+          /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+    
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 500;
+          font-display: swap;
+          src: local(''),
+            url('fonts/inter-v12-latin-500.woff2') format('woff2'),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-500.woff') format('woff');
+          /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+    
+        @font-face {
+          font-family: 'Inter';
+          font-style: normal;
+          font-weight: 700;
+          font-display: swap;
+          src: local(''),
+            url('fonts/inter-v12-latin-700.woff2') format('woff2'),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-700.woff') format('woff');
+          /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
+    
+        .call-bubble {
+            position: fixed;
+            bottom: 30px;  /* Updated position to where chat bubble was */
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background-color: rgb(12, 2, 28);  /* Updated primary color */
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(12, 2, 28, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: floatAnimation 3s ease-in-out infinite;
+            box-shadow: 0 4px 15px rgba(12, 2, 28, 0.3),
+                        0 8px 30px rgba(12, 2, 28, 0.2),
+                        0 15px 45px rgba(12, 2, 28, 0.1);
+        }
+    
+        .call-bubble:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(12, 2, 28, 0.4),
+                        0 12px 35px rgba(12, 2, 28, 0.3),
+                        0 20px 50px rgba(12, 2, 28, 0.2);
+        }
+    
+        .call-bubble i {
+            color: white;
+            font-size: 28px;
+            transition: transform 0.3s ease;
+            animation: pulseAnimation 2s ease-in-out infinite;
+        }
+    
+        .call-bubble:hover i {
+            transform: scale(1.1);
+        }
+    
+        /* Add ripple effect */
+        .call-bubble::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(0);
+            transition: transform 0.5s ease-out;
+        }
+    
+        .call-bubble:active::after {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    
+        /* Mobile adjustments */
+        @media screen and (max-width: 600px) {
+            .call-bubble {
+                width: 55px;
+                height: 55px;
+                animation: floatAnimation 2.5s ease-in-out infinite;
+                bottom: 20px;
+                right: 20px;
+            }
+    
+            .call-bubble i {
+                font-size: 24px;
+            }
+        }
+    
+        @media screen and (max-width: 380px) {
+            .call-bubble {
+                width: 50px;
+                height: 50px;
+            }
+    
+            .call-bubble i {
+                font-size: 22px;
+            }
+        }
+    
+        @keyframes pulseAnimation {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(12, 2, 28, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 20px rgba(12, 2, 28, 0.4);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(12, 2, 28, 0.3);
+            }
+        }
+    
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    
+        /* Disable animations if user prefers reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .call-bubble, .call-bubble i {
+                animation: none;
+                transition: none;
+            }
+        }
+      </style>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Create call bubble
+            const callBubble = document.createElement("div");
+            callBubble.className = "call-bubble";
+            callBubble.innerHTML = `
+                <a href="tel:+17068735728" style="color: white; text-decoration: none;">
+                    <i class="fas fa-phone"></i>
+                </a>
+            `;
+            document.body.appendChild(callBubble);
+        });
+    </script>
+
+
+
+
+    <style>
+        
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+
+
+            background: linear-gradient(-45deg, #0f0c29, #1a1752, #302b63,#07204e, #24243e, #073282, #1a1752,#1a1752, #243B55);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }        
+        
+        @media screen and (min-width: 768px) {
+            body {
+                margin: 10px;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            body {
+                background-size: 600% 200%;
+                animation: gradientBGMobile 10s ease infinite;
+            }
+        }
+
+        @keyframes gradientBGMobile {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        /* .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        } */
+
+        /* Hero section styles */
+        .hero {
+           
+            color: white;
+        
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button .btn {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+     
+        .logo-text {
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                box-shadow: none;
+            }
+            50% {
+                box-shadow: none;
+            }
+        }
+
+        /* Update any other instances of the color */
+        .main-nav a:hover {
+            color: #ffffff;
+        }
+
+        .result-number {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="./" style="display: flex; align-items: center;"><img src="assets/images/logo.png" alt="MercLytics Logo" style="opacity: 0.6;"></a>
+                    <!-- <span class="logo-text" >merclytics</span>                 -->
+                </div>
+                <!-- <nav class="main-nav">
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav> -->
+            </div>
+        </div>
+    </header>
+
+    <style>
+        .main-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: transparent;
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;  /* Space between logo and text */
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav li {
+            margin-left: 30px;
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: #ffffff;
+        }
+        
+        .container {
+                        max-width: 1200px;
+                        margin: 0 auto;
+                        padding: 0 15px;
+                        /* width: 100%; */
+                    }
+    </style>
+    <section class="hero" style="margin-top: 5rem; padding: 2rem 0;">
+        <div class="container">
+    <article class="blog-article" style="max-width: 800px; margin: 0 auto; line-height: 1.6; text-align: left;">
+        <h1 class="article-title" style="font-size: 2.5rem; color: #ffffff; margin-bottom: 1.5rem;">AI Agents: Revolutionizing Business in a Data-Driven Future</h1>
+        <p class="article-intro" style="font-size: 1.2rem; color: #ffffff; margin-bottom: 2rem;">Imagine a digital colleague that works 24/7, learns on the fly, and autonomously tackles tasks across your organization. Industry leaders predict this is becoming a reality. OpenAI's CEO Sam Altman expects that "in 2025, we may see the first AI agents 'join the workforce' and materially change the output of companies" . Nvidia's CEO Jensen Huang even calls AI agents "a multitrillion-dollar opportunity" as the market for these agents is projected to grow from about $5.1 billion in 2024 to $47.1 billion by 2030 . For Merclytics – a data-driven company at the forefront of analytics – harnessing AI agents could be a game-changer for efficiency and innovation. This article explores what AI agents are, how they evolved, and how they can transform business operations and decision-making. We'll dive into real-world applications (especially in data analysis and research), future trends and challenges, integration strategies, and the ethical and regulatory considerations of deploying AI agents in business.</p>
+        <img src="assets/images/bl-1.jpg" alt="AI Agents" style="width: 100%; height: auto; margin-bottom: 2rem; max-width: 100%; object-fit: cover;">
+        <h2 class="section-heading" style="font-size: 2rem; color: #ffffff; margin: 2rem 0 1rem;">What Are AI Agents and How Have They Evolved?</h2>
+        <p class="article-text" style="margin-bottom: 1.5rem; color: #ffffff;">Defining AI Agents: AI agents are essentially intelligent software programs that can perceive their environment, make decisions, and take actions to achieve specific goals with minimal human intervention. In simple terms, an AI agent is an AI-driven system that "uses tools to accomplish goals" and can remember information, utilize AI models, and decide when to access other systems on a user's behalf. Unlike static software, AI agents continuously observe, learn, and adapt. They have the ability to observe, plan, and act autonomously, which means they can analyze data, devise strategies, and execute tasks – all while adjusting to new information or changes in context. This makes them more dynamic and powerful than traditional automated scripts or basic chatbots.</p>
+        
+        <p class="article-text" style="margin-bottom: 1.5rem; color: #ffffff;">A Brief Evolution: AI agents have come a long way through several waves of AI development. In the 1960s-1980s, early AI programs were largely rule-based – exemplified by expert systems that used hard-coded rules to solve problems (for example, the MYCIN medical diagnosis system). These systems were intelligent in narrow domains but lacked true autonomy or learning. By the 1990s, the concept of "intelligent agents" began taking shape: software agents could operate with a degree of autonomy, such as early virtual assistants that performed simple tasks like filtering emails or scheduling meetings.</p>
+        
+        <p class="article-text" style="margin-bottom: 1.5rem; color: #ffffff;">The 2000s saw the rise of machine learning in business applications, dramatically improving what AI agents could do. AI became more data-driven – from statistical models to IBM's Watson (which famously beat humans on Jeopardy!) – enabling agents to handle more complex decision-making and natural language understanding. In the 2010s, deep learning took center stage. Advances like deep neural networks and powerful language models (e.g. OpenAI's GPT-3 in 2020) gave AI agents remarkable conversational abilities and pattern-recognition skills. AI agents also started moving into the physical world – think of autonomous robots and self-driving cars making real-time decisions.</p>
+        
+        <p class="article-text" style="margin-bottom: 1.5rem; color: #ffffff;">Now in the 2020s, we've entered the era of "agentic AI." Modern AI agents are far more autonomous and proactive than their predecessors. They can set longer-term plans, collaborate with other AI agents, and adapt to changing conditions with minimal oversight. In other words, AI agents today don't just respond to commands; they can proactively figure out how to achieve a goal. For example, new multi-agent systems allow specialized agents to work together (one agent might gather data while another analyzes it, coordinated by a "manager" agent). This evolution means AI agents are now capable of driving end-to-end business processes and complex workflows in a way that simply wasn't possible a decade ago.</p>
+        <img src="assets/images/bl-2.jpg" alt="AI Agents" style="width: 100%; height: auto; margin-bottom: 2rem; max-width: 100%; object-fit: cover;">
+        <h2 class="section-heading" style="font-size: 2rem; color: #ffffff; margin: 2rem 0 1rem;">Enhancing Business Operations, Decision-Making, and Efficiency</h2>
+        <p class="article-text" style="margin-bottom: 1.5rem; color: #ffffff;">AI agents are poised to supercharge business operations by automating routine tasks, providing data-driven insights, and even collaborating in decision-making. Think of these agents as tireless team members that continuously learn and improve. They can observe what's happening in the business, analyze vast datasets or real-time streams, and act on those insights – all at a speed and scale no human team can match.</p>
+        
+        <p class="article-text" style="margin-bottom: 1.5rem; color: #ffffff;">Automation of Routine Tasks: One of the most immediate benefits is relieving employees from repetitive, mundane tasks. For instance, consider a marketing scenario at a global consumer goods company. Traditionally, preparing weekly marketing reports and recommendations might take a team of analysts an entire week. With an AI agent in place, that same project "once required six analysts per week [but] now [requires] a single employee working with an agent," delivering results in under an hour. This kind of efficiency gain not only cuts cost and time; it also allows human workers to focus on more strategic and creative work.</p>
+        
+        <p class="article-text" style="margin-bottom: 1.5rem; color: #ffffff;">Data Analysis and Decision Support: AI agents excel at sifting through large volumes of data to surface insights for decision-making. They can ingest data from internal databases, live feeds, or even the web, then apply AI models to detect patterns or anomalies that humans might miss. In essence, an AI agent can function as an ultra-fast analyst or research assistant. For example, agents are now used in R&D and analytics roles – a biopharma company deployed AI agents for drug research and saw a 25% reduction in cycle time, plus a 35% gain in time efficiency when drafting clinical study reports.</p>
+        
+        <p class="article-text" style="margin-bottom: 1.5rem; color: #ffffff;">Operational Efficiency and 24/7 Workflows: Unlike humans, AI agents don't need breaks. They can monitor processes and execute tasks around the clock. This opens up possibilities for continuous operations. For instance, in IT and operations departments, AI agents can oversee system maintenance, data backups, or anomaly detection without human intervention.</p>
+        <img src="assets/images/bl-3.jpg" alt="AI Agents" style="width: 100%; height: auto; margin-bottom: 2rem; max-width: 100%; object-fit: cover;">
+        <h2 class="section-heading" style="font-size: 2rem; color: #ffffff; margin: 2rem 0 1rem;">Real-World Applications of AI Agents in Data and Research</h2>
+        <ul class="feature-list" style="margin-bottom: 2rem; padding-left: 1.5rem; color: #ffffff;">
+          <li style="margin-bottom: 1rem;"><strong>Marketing Analytics & Content Creation:</strong> A leading consumer packaged goods company used an AI content agent to generate marketing copy and insights, resulting in a 95% reduction in content creation costs and a 50× increase in speed.</li>
+          <li style="margin-bottom: 1rem;"><strong>Customer Service & Support:</strong> Global banks and businesses have deployed AI customer-service agents, reducing support costs significantly while maintaining quality.</li>
+          <li style="margin-bottom: 1rem;"><strong>Research & Development:</strong> In pharmaceutical and biotech R&D, AI agents are accelerating research processes, reducing cycle times and speeding up documentation.</li>
+          <li style="margin-bottom: 1rem;"><strong>Human Resources & Recruiting:</strong> AI agents are streamlining HR workflows by generating job descriptions and sourcing candidates autonomously.</li>
+          <li style="margin-bottom: 1rem;"><strong>Enterprise Data Management:</strong> In IT departments, AI agents manage data pipelines, perform ETL tasks, and optimize operations autonomously.</li>
+        </ul>
+        
+        <h2 class="section-heading" style="font-size: 2rem; color: #ffffff; margin: 2rem 0 1rem;">The Future of AI Agents: Trends, Advancements, and Challenges</h2>
+        <p class="article-text" style="margin-bottom: 1.5rem; color: #ffffff;">As we look ahead, AI agents are set to become even more sophisticated and ubiquitous in business. They will become proactive workforce members, capable of long-term planning, handling multi-step tasks, and coordinating with other AI agents. This evolution can lead to smaller human teams working in tandem with multiple AI agents, increasing productivity and unlocking new business models.</p>
+        
+        <h2 class="section-heading" style="font-size: 2rem; color: #ffffff; margin: 2rem 0 1rem;">Integrating AI Agents into Business for a Competitive Edge</h2>
+        <p class="article-text" style="margin-bottom: 1.5rem; color: #ffffff;">For businesses looking to stay ahead, integrating AI agents is quickly shifting from a cutting-edge idea to a strategic necessity. Companies should start by identifying high-impact use cases, choose the right platform or build a custom solution, pilot and iterate, and train their teams for optimal collaboration with AI. Governance and continuous improvement are crucial to ensure AI agents function responsibly and effectively.</p>
+        <img src="assets/images/bl-4.jpg" alt="AI Agents" style="width: 100%; height: auto; margin-bottom: 2rem; max-width: 100%; object-fit: cover;">
+        <h2 class="section-heading" style="font-size: 2rem; color: #ffffff; margin: 2rem 0 1rem;">Ethical and Regulatory Considerations for AI Agent Deployment</h2>
+        <p class="article-text" style="margin-bottom: 1.5rem; color: #ffffff;">Deploying AI agents requires a responsible approach. Companies must ensure fairness, transparency, and accountability. It's essential to audit for biases, ensure data privacy, and establish clear oversight mechanisms. Adhering to emerging regulations like the EU AI Act will be critical to building trust and avoiding unintended consequences.</p>
+        
+        <h2 class="section-heading" style="font-size: 2rem; color: #ffffff; margin: 2rem 0 1rem;">Conclusion</h2>
+        <p class="article-text" style="margin-bottom: 2rem; color: #ffffff;">AI agents represent a profound shift in how businesses operate. They promise leaps in productivity, intelligence, and scalability, enabling companies like Merclytics to harness data-driven insights like never before. Embracing this transformation will allow companies to redefine success and maintain a competitive edge in an increasingly agent-driven future.</p>
+        
+        <div class="sources" style="border-top: 1px solid #ddd; padding-top: 2rem; color: #ffffff;">
+            <p style="font-style: italic; margin-bottom: 1rem;"><em>Sources:</em></p>
+            <ol class="sources-list" style="padding-left: 1.5rem;">
+              <li style="margin-bottom: 0.5rem;">Boston Consulting Group – "AI Agents: What They Are and Their Business Impact."</li>
+              <li style="margin-bottom: 0.5rem;">World Wide Technology – "The Evolution of AI Agents: From Simple Programs to Agentic AI."</li>
+              <li style="margin-bottom: 0.5rem;">Forbes (Thomas Caldwell) – "The Evolution Of AI Agents In The Third Wave Of AI."</li>
+              <li style="margin-bottom: 0.5rem;">AlphaSense (Sarah Hoffman) – "Will AI Agents Join the Workforce This Year?"</li>
+              <li style="margin-bottom: 0.5rem;">TechTarget – "Oracle launches over 50 AI Agents for business use."</li>
+              <li style="margin-bottom: 0.5rem;">IBM Blog (Alice Gomstyn et al.) – "New ethics risks courtesy of AI agents? Researchers are on the case."</li>
+              <li style="margin-bottom: 0.5rem;">JDSupra (StoneTurn) – "Preparing for the AI Agent Revolution: Legal and Compliance Challenges."</li>
+              <li style="margin-bottom: 0.5rem;">Securiti – "Navigating the AI Regulatory Maze: A Guide for Businesses in 2024."</li>
+            </ol>
+        </div>
+      </article>
+    </section>
+    <style>        footer {            color: #fff;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer a {
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        footer h2 {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo {
+            color: #271642;
+            font-size: clamp(4rem, 10vw, 10rem);
+            opacity: 0.4;
+            letter-spacing: -0.05em;
+            font-weight: 700;
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-logo {
+                font-size: clamp(2.5rem, 8vw, 6rem);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .footer-social {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .footer-links span {
+                display: none;
+            }
+        }
+    </style>    
+    
+    
+    <footer class="py-8">
+        <div class="container">
+            <div class="footer-logo">merclytics</div>
+            
+          
+
+            <div class="footer-bottom">
+                <div>
+                    <div class="footer-links">
+                        <a href="/privacy-policy">Privacy Policy</a>
+                        <span>|</span>
+                        <a href="/terms-and-conditions">Terms & Conditions</a>
+                    </div>
+                    <div>© 2025 merclytics</div>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#">LINKEDIN</a>
+                    <a href="#">INSTAGRAM</a>
+                    <a href="#">TWITTER</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+</body>
+</html>
+ 
